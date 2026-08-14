@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>紐西蘭南島旅遊手帳 🐧</title>
-<!-- build: 2026-08-14-cdn-cachebust-fix -->
-<!-- BUILD_ID: 2026-08-14-cdn-cachebust-fix -->
-<meta name="build-id" content="2026-08-14-cdn-cachebust-fix" />
+<!-- build: 2026-08-14-empty-guard-fix -->
+<!-- BUILD_ID: 2026-08-14-empty-guard-fix -->
+<meta name="build-id" content="2026-08-14-empty-guard-fix" />
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -159,7 +159,7 @@
 
 <script>
 (function(){
-  const CURRENT_BUILD='2026-08-14-cdn-cachebust-fix';
+  const CURRENT_BUILD='2026-08-14-empty-guard-fix';
   try{
     const bustUrl=location.pathname+'?_cb='+Date.now()+Math.random().toString(36).slice(2);
     fetch(bustUrl,{cache:'no-store'}).then(r=>r.text()).then(html=>{
@@ -218,7 +218,18 @@ const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const escapeHtml=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 function loadJSON(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(e){return fallback}}
 let saveTimer;
-function saveJSON(key,value){try{localStorage.setItem(key,JSON.stringify(value));showSaved();syncPush(key,value);return true}catch(e){alert('瀏覽器儲存空間不足。請刪除部分照片或先匯出備份。');return false}}
+function saveJSON(key,value,allowEmpty){
+  try{
+    if(!allowEmpty&&Array.isArray(value)&&value.length===0){
+      let prev=null;try{const raw=localStorage.getItem(key);prev=raw?JSON.parse(raw):null}catch(e){}
+      if(Array.isArray(prev)&&prev.length>0){
+        console.warn('偵測到嘗試把',key,'存成空陣列（原本有',prev.length,'筆資料），已阻擋以避免誤刪資料');
+        return false;
+      }
+    }
+    localStorage.setItem(key,JSON.stringify(value));showSaved();syncPush(key,value);return true
+  }catch(e){alert('瀏覽器儲存空間不足。請刪除部分照片或先匯出備份。');return false}
+}
 function showSaved(){clearTimeout(saveTimer);$('saveStatus').textContent='儲存中…';saveTimer=setTimeout(()=>$('saveStatus').textContent='已儲存',350)}
 
 /* ===================== 多裝置即時同步（Firebase）＋ 照片雲端上傳（ImgBB） =====================
@@ -676,7 +687,7 @@ rateCurrency.onchange=()=>updateRateModal(true);rateAmount.oninput=calcRateModal
 
 exportData.onclick=()=>{const photos={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith('nz-photo:'))photos[k]=localStorage.getItem(k)}const data={version:3,exportedAt:new Date().toISOString(),overview,days,expenses,personalExpenses,packing,shopping,rates,currentIdentity,photos};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='chia-tsae-nz-travel-backup.json';a.click();URL.revokeObjectURL(a.href)};
 importData.onchange=async()=>{const file=importData.files[0];if(!file)return;try{const d=JSON.parse(await file.text());appConfirm('匯入會覆蓋目前資料，確定繼續？',()=>{overview=d.overview||defaultOverview;days=(d.days||defaultDays).map(normalizeDay);expenses=normalizeExpenseList(d.expenses||[]);personalExpenses=normalizePersonalList(d.personalExpenses||[]);packing=normalizeChecklist(d.packing||[]);shopping=normalizeChecklist(d.shopping||[]);rates={...FALLBACK_RATES,...(d.rates||{})};currentIdentity=d.currentIdentity||'Chia';Object.entries(d.photos||{}).forEach(([k,v])=>localStorage.setItem(k,v));saveAll();location.reload()},'確定匯入')}catch(e){alert('備份檔格式不正確')}finally{importData.value=''}};
-function saveAll(){saveJSON(KEYS.overview,overview);saveJSON(KEYS.days,days);saveJSON(KEYS.shared,expenses);saveJSON(KEYS.personal,personalExpenses);saveJSON(KEYS.packing,packing);saveJSON(KEYS.shopping,shopping);saveJSON(KEYS.rates,rates);saveJSON(KEYS.identity,currentIdentity)}
+function saveAll(){saveJSON(KEYS.overview,overview,true);saveJSON(KEYS.days,days,true);saveJSON(KEYS.shared,expenses,true);saveJSON(KEYS.personal,personalExpenses,true);saveJSON(KEYS.packing,packing,true);saveJSON(KEYS.shopping,shopping,true);saveJSON(KEYS.rates,rates,true);saveJSON(KEYS.identity,currentIdentity,true)}
 resetData.onclick=()=>appConfirm('確定恢復預設行程？目前新增的記帳、照片與清單都會清除。',()=>{Object.keys(localStorage).filter(k=>k.startsWith('nz-photo:')||Object.values(KEYS).includes(k)||k==='nz-expenses').forEach(k=>localStorage.removeItem(k));location.reload()},'確定清除');
 initSync();
 window.addEventListener('pageshow',e=>{if(e.persisted)location.reload()});
