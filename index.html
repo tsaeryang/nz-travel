@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>紐西蘭南島旅遊手帳 🐧</title>
-<!-- build: 2026-08-14-restaurant-cache-fix -->
-<!-- BUILD_ID: 2026-08-14-restaurant-cache-fix -->
-<meta name="build-id" content="2026-08-14-restaurant-cache-fix" />
+<!-- build: 2026-08-14-cdn-cachebust-fix -->
+<!-- BUILD_ID: 2026-08-14-cdn-cachebust-fix -->
+<meta name="build-id" content="2026-08-14-cdn-cachebust-fix" />
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -159,9 +159,10 @@
 
 <script>
 (function(){
-  const CURRENT_BUILD='2026-08-14-restaurant-cache-fix';
+  const CURRENT_BUILD='2026-08-14-cdn-cachebust-fix';
   try{
-    fetch(location.href,{cache:'no-store'}).then(r=>r.text()).then(html=>{
+    const bustUrl=location.pathname+'?_cb='+Date.now()+Math.random().toString(36).slice(2);
+    fetch(bustUrl,{cache:'no-store'}).then(r=>r.text()).then(html=>{
       const m=html.match(/BUILD_ID:\s*([^\s\-]+(?:-[^\s\-]+)*)\s*-->/);
       if(m&&m[1]&&m[1]!==CURRENT_BUILD)location.reload();
     }).catch(()=>{});
