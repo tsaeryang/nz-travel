@@ -238,8 +238,9 @@ if(SYNC_ENABLED){
   try{
     firebase.initializeApp(firebaseConfig);
     fbDb=firebase.database();
-    firebase.auth().signInAnonymously().catch(e=>console.error('匿名登入失敗',e));
+    firebase.auth().signInAnonymously().catch(e=>{console.error('匿名登入失敗，改用原本方式同步',e);initSync()});
     firebase.auth().onAuthStateChanged(user=>{if(user)initSync()});
+    setTimeout(()=>{if(!syncStarted){console.warn('登入逾時，改用原本方式同步');initSync()}},4000);
   }
   catch(e){console.error('Firebase 初始化失敗',e)}
 }
@@ -692,6 +693,7 @@ importData.onchange=async()=>{const file=importData.files[0];if(!file)return;try
 function saveAll(){saveJSON(KEYS.overview,overview);saveJSON(KEYS.days,days);saveJSON(KEYS.shared,expenses);saveJSON(KEYS.personal,personalExpenses);saveJSON(KEYS.packing,packing);saveJSON(KEYS.shopping,shopping);saveJSON(KEYS.rates,rates);saveJSON(KEYS.identity,currentIdentity)}
 resetData.onclick=()=>appConfirm('確定恢復預設行程？目前新增的記帳、照片與清單都會清除。',()=>{Object.keys(localStorage).filter(k=>k.startsWith('nz-photo:')||Object.values(KEYS).includes(k)||k==='nz-expenses').forEach(k=>localStorage.removeItem(k));location.reload()},'確定清除');
 initSync();
+window.addEventListener('pageshow',e=>{if(e.persisted)location.reload()});
 </script>
 </body>
 </html>
