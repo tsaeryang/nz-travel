@@ -396,10 +396,10 @@ function dedupeEvents(events){
   });
   return out;
 }
-function normalizeDay(d){return{...d,id:d.id||stableId('day',(d.date||'')+'|'+(d.title||'')),updatedAt:d.updatedAt||Date.now(),place:d.place||inferPlace(d.title),events:sortEvents(dedupeEvents((d.events||[]).map(e=>({...e,id:e.id||stableId('ev',(e.time||'')+'|'+(e.title||'')+'|'+(e.desc||'').slice(0,50)),updatedAt:e.updatedAt||Date.now(),link:e.link||'',addedBy:e.addedBy||'Tsae',photos:e.photos||[]})))),restaurants:d.restaurants||{lunch:[],dinner:[]},lodging:d.lodging===null?null:{name:'尚未預訂',address:'',link:'',note:'',photos:[],...(d.lodging||{})},dailyCheck:{note:'',checkedAt:'',...(d.dailyCheck||{})},photos:d.photos||[]}}
-function normalizeExpense(x){const amountTwd=x.amountTwd!=null?Number(x.amountTwd):Number(x.twd!=null?x.twd:x.amount||0);return{id:x.id||stableId('exp',(x.date||'')+'|'+(x.item||x.name||'')+'|'+(x.originalAmount!=null?x.originalAmount:x.amount||0)+'|'+(x.payer||x.paidBy||'')),updatedAt:x.updatedAt||Date.now(),date:x.date||'',item:x.item||x.name||'',originalAmount:Number(x.originalAmount!=null?x.originalAmount:x.amount||0),currency:x.currency||'TWD',rate:Number(x.rate||1),amountTwd,payer:x.payer||x.paidBy||'Chia',category:CATEGORIES.includes(x.category)?x.category:'其他',split:x.split||'equal',phase:x.phase||'pretrip',note:x.note||'',addedBy:x.addedBy||x.payer||'Chia',deleted:!!x.deleted}}
-function normalizePersonal(x){return{id:x.id||stableId('per',(x.date||'')+'|'+(x.item||x.name||'')+'|'+(x.originalAmount!=null?x.originalAmount:x.amount||0)+'|'+(x.owner||'')),updatedAt:x.updatedAt||Date.now(),owner:x.owner||'Chia',date:x.date||'',item:x.item||x.name||'',category:CATEGORIES.includes(x.category)?x.category:'其他',originalAmount:Number(x.originalAmount!=null?x.originalAmount:x.amount||0),currency:x.currency||'TWD',rate:Number(x.rate||1),amountTwd:Number(x.amountTwd!=null?x.amountTwd:x.twd!=null?x.twd:x.amount||0),note:x.note||'',addedBy:x.addedBy||x.owner||'Chia',deleted:!!x.deleted}}
-function normalizeCheck(x){return{id:x.id||stableId('chk',(x.t||x.text||'')+'|'+(x.owner||'')),updatedAt:x.updatedAt||Date.now(),t:x.t||x.text||'',done:!!x.done,owner:x.owner||'共同',addedBy:x.addedBy||'Tsae',photos:Array.isArray(x.photos)?x.photos:[],deleted:!!x.deleted}}
+function normalizeDay(d){return{...d,id:d.id||stableId('day',(d.date||'')+'|'+(d.title||'')),updatedAt:d.updatedAt||1,place:d.place||inferPlace(d.title),events:sortEvents(dedupeEvents((d.events||[]).map(e=>({...e,id:e.id||stableId('ev',(e.time||'')+'|'+(e.title||'')+'|'+(e.desc||'').slice(0,50)),updatedAt:e.updatedAt||1,link:e.link||'',addedBy:e.addedBy||'Tsae',photos:e.photos||[]})))),restaurants:d.restaurants||{lunch:[],dinner:[]},lodging:d.lodging===null?null:{name:'尚未預訂',address:'',link:'',note:'',photos:[],...(d.lodging||{})},dailyCheck:{note:'',checkedAt:'',...(d.dailyCheck||{})},photos:d.photos||[]}}
+function normalizeExpense(x){const amountTwd=x.amountTwd!=null?Number(x.amountTwd):Number(x.twd!=null?x.twd:x.amount||0);return{id:x.id||stableId('exp',(x.date||'')+'|'+(x.item||x.name||'')+'|'+(x.originalAmount!=null?x.originalAmount:x.amount||0)+'|'+(x.payer||x.paidBy||'')),updatedAt:x.updatedAt||1,date:x.date||'',item:x.item||x.name||'',originalAmount:Number(x.originalAmount!=null?x.originalAmount:x.amount||0),currency:x.currency||'TWD',rate:Number(x.rate||1),amountTwd,payer:x.payer||x.paidBy||'Chia',category:CATEGORIES.includes(x.category)?x.category:'其他',split:x.split||'equal',phase:x.phase||'pretrip',note:x.note||'',addedBy:x.addedBy||x.payer||'Chia',deleted:!!x.deleted}}
+function normalizePersonal(x){return{id:x.id||stableId('per',(x.date||'')+'|'+(x.item||x.name||'')+'|'+(x.originalAmount!=null?x.originalAmount:x.amount||0)+'|'+(x.owner||'')),updatedAt:x.updatedAt||1,owner:x.owner||'Chia',date:x.date||'',item:x.item||x.name||'',category:CATEGORIES.includes(x.category)?x.category:'其他',originalAmount:Number(x.originalAmount!=null?x.originalAmount:x.amount||0),currency:x.currency||'TWD',rate:Number(x.rate||1),amountTwd:Number(x.amountTwd!=null?x.amountTwd:x.twd!=null?x.twd:x.amount||0),note:x.note||'',addedBy:x.addedBy||x.owner||'Chia',deleted:!!x.deleted}}
+function normalizeCheck(x){return{id:x.id||stableId('chk',(x.t||x.text||'')+'|'+(x.owner||'')),updatedAt:x.updatedAt||1,t:x.t||x.text||'',done:!!x.done,owner:x.owner||'共同',addedBy:x.addedBy||'Tsae',photos:Array.isArray(x.photos)?x.photos:[],deleted:!!x.deleted}}
 function dedupeBySig(items,sigFn,mergeExtra){
   const seenIndex=new Map(),out=[];
   (items||[]).forEach(x=>{
@@ -416,32 +416,6 @@ function normalizeChecklist(arr){return dedupeBySig((arr||[]).map(normalizeCheck
 function normalizeExpenseList(arr){return dedupeBySig((arr||[]).map(normalizeExpense),x=>(x.date||'')+'|'+(x.item||'')+'|'+x.originalAmount+'|'+(x.payer||''))}
 function normalizePersonalList(arr){return dedupeBySig((arr||[]).map(normalizePersonal),x=>(x.date||'')+'|'+(x.item||'')+'|'+x.originalAmount+'|'+(x.owner||''))}
 let days=(loadJSON(KEYS.days,null)||structuredClone(defaultDays)).map(normalizeDay);
-if(!localStorage.getItem('nz-itinerary-v2-applied')){
-  ['d11-26','d11-27','d11-28','d11-29','d12-2','d12-3'].forEach(id=>{
-    const src=defaultDays.find(d=>d.id===id),idx=days.findIndex(d=>d.id===id);
-    if(!src||idx<0)return;
-    const old=days[idx];
-    const keepLodging=old.lodging&&old.lodging.name&&old.lodging.name!=='尚未預訂';
-    const keepPhotos=old.photos&&old.photos.length;
-    const keepDailyCheck=old.dailyCheck&&old.dailyCheck.checkedAt;
-    days[idx]=normalizeDay({...structuredClone(src),lodging:keepLodging?old.lodging:structuredClone(src.lodging),photos:keepPhotos?old.photos:src.photos,dailyCheck:keepDailyCheck?old.dailyCheck:src.dailyCheck,updatedAt:Date.now()});
-  });
-  localStorage.setItem('nz-itinerary-v2-applied','1');
-  saveJSON(KEYS.days,days);
-}
-if(!localStorage.getItem('nz-lodging-v1-applied')){
-  ['d11-23','d11-24','d11-25','d11-26','d11-30'].forEach(id=>{
-    const src=defaultDays.find(d=>d.id===id),idx=days.findIndex(d=>d.id===id);
-    if(!src||idx<0)return;
-    const old=days[idx];
-    if(!old.lodging||!old.lodging.name||old.lodging.name==='尚未預訂'){
-      const oldPhotos=(old.lodging&&old.lodging.photos)||[];
-      days[idx]={...old,lodging:{...structuredClone(src.lodging),photos:oldPhotos},updatedAt:Date.now()};
-    }
-  });
-  localStorage.setItem('nz-lodging-v1-applied','1');
-  saveJSON(KEYS.days,days);
-}
 let expenses=normalizeExpenseList(loadJSON(KEYS.shared,loadJSON('nz-expenses',[])));
 let personalExpenses=normalizePersonalList(loadJSON(KEYS.personal,[]));
 let packing=normalizeChecklist(loadJSON(KEYS.packing,[{t:'護照與駕照／國際駕照',done:false},{t:'防風防水外套',done:false},{t:'保暖中層與發熱衣',done:false},{t:'健走鞋、拖鞋',done:false},{t:'行動電源、車充、轉接頭',done:false},{t:'防曬、太陽眼鏡、帽子',done:false}]));
