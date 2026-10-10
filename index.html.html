@@ -22,7 +22,7 @@
 
 .restaurant-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.meal-card{border:2px solid var(--ink);border-radius:17px;padding:13px;background:#fff}.restaurant-item{padding:10px 0;border-bottom:2px dashed #c7c1b5}.restaurant-item:last-child{border-bottom:0}.restaurant-item b{display:block;margin-bottom:3px}.source-note{font-size:.76rem;color:#7b6649}.lodging-card{background:#eef7ff;border:3px solid var(--ink);border-radius:20px;padding:16px;margin:18px 0;box-shadow:4px 5px 0 #0002}.lodging-title{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.lodging-title>div{flex:1;min-width:0}.lodging-edit-button{flex:0 0 auto;white-space:nowrap;word-break:keep-all;writing-mode:horizontal-tb;padding-left:10px;padding-right:10px}.daily-check-card{border:3px solid var(--ink);border-radius:18px;background:#eef9e9;padding:14px;margin:12px 0;box-shadow:4px 5px 0 #0002}.daily-check-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}.daily-check-status{margin-top:8px;font-size:.85rem;color:#5b594f}.check-prompt{min-height:240px;font-family:inherit}.status-link{display:inline-flex;text-decoration:none;color:#2b5f44;border:2px solid var(--ink);border-radius:999px;padding:5px 10px;background:#fff;font-weight:800;font-size:.82rem}.accommodation-photo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}.accommodation-photo-grid .event-photo img{aspect-ratio:1/1}.time-select-note{font-size:.8rem;color:#6c6c6c;margin-top:4px}
 
-/* Small static travel doodles: no animation, filters or external assets. */
+/* Inline travel doodles: no filters or external assets. */
 .travel-doodle{display:block;width:min(320px,100%);height:auto;margin:0 auto 8px;pointer-events:none}
 .doodle-heading{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .mini-doodle{display:block;width:43px;height:43px;flex:0 0 43px;pointer-events:none}
@@ -60,23 +60,48 @@
 @keyframes doodle-float{0%,100%{transform:translate(0,0)}50%{transform:translate(5px,-2px)}}
 @keyframes doodle-wave{0%,12%,32%,100%{transform:rotate(0)}18%,26%{transform:rotate(-25deg)}22%,30%{transform:rotate(-8deg)}}
 @keyframes doodle-glow{0%,100%{opacity:.65;transform:scale(.9)}50%{opacity:1;transform:scale(1.08)}}
+/* Keep the artwork beside the title, with identity and currency on one row. */
+.hero{padding:20px 24px 14px}
+.hero-main{display:block}
+.hero-title-line{display:flex;align-items:center;gap:18px}
+.hero .travel-doodle{width:160px;flex:0 0 auto}
+.hero-tools{grid-template-columns:minmax(0,1fr) auto;gap:5px 14px;margin-top:12px;padding:10px 14px}
+.hero-identity{flex-wrap:nowrap;gap:10px}
+.hero-utilities{display:contents}
+.hero-status{grid-column:1/-1;flex-direction:row;justify-content:flex-end;gap:9px}
+#identityButtons{min-width:0;max-width:100%;overflow-x:auto;flex-wrap:nowrap!important;padding:2px 4px 5px;scrollbar-width:thin}
+#identityButtons button{flex:0 0 auto;white-space:nowrap}
 @media(max-width:700px){
- .hero{padding:20px 18px 16px}
- .hero-main{grid-template-columns:1fr;gap:12px}
- .hero .travel-doodle{grid-row:1;width:190px;margin:0 auto}
- .hero-intro{text-align:center}
- .hero-title-line h1{font-size:24px;line-height:1.4}
+ .hero{padding:16px 14px 12px}
+ .hero-main{display:block}
+ .hero .travel-doodle{width:104px;margin:0}
+ .hero-intro{text-align:left}
+ .hero-title-line{gap:8px;min-height:54px;justify-content:flex-start}
+ .hero-title-line h1{font-size:22px;line-height:1.35;letter-spacing:.025em}
  .hero-meta-display{margin-top:7px}
- .hero-dates{font-size:.77rem}
- .hero-meta-actions{justify-content:center;gap:18px;margin-top:8px;flex-wrap:wrap}
- .hero-route{flex:0 1 auto;max-width:100%}
- .hero-route summary{margin:auto;font-size:.78rem}
+ .hero-dates{font-size:.75rem}
+ .hero-meta-actions{justify-content:space-between;gap:12px;margin-top:7px}
+ .hero-route{flex:1;max-width:100%}
+ .hero-route summary{margin:0;font-size:.76rem}
  .hero-route-content{text-align:left;font-size:.82rem}
- .hero-tools{grid-template-columns:1fr;gap:12px;margin-top:18px;padding:12px 14px}
- .hero-identity{justify-content:center;gap:10px}
- .hero-utilities{padding-top:10px;border-top:1px solid #bba16a66}
+ .hero-tools{gap:4px 8px;margin-top:10px;padding:8px 10px}
+ .hero-identity{justify-content:flex-start;gap:6px}
+ .hero-tools .identity-label{font-size:.72rem;white-space:nowrap}
+ .hero-tools .identity-btn{padding:5px 8px;font-size:.76rem;box-shadow:2px 2px 0 #63593e}
+ .hero-utilities #openRate{padding:7px 8px;font-size:.74rem;white-space:nowrap}
+ .hero-status .save-status{font-size:.66rem}
 }
-@media(max-width:360px){.hero{padding-left:12px;padding-right:12px}.hero-title-line h1{font-size:21px}.hero-identity{gap:7px}.hero-tools{padding:10px}}
+@media(max-width:360px){.hero{padding-left:12px;padding-right:12px}.hero-title-line h1{font-size:20px}.hero-title-line{gap:6px}.hero .travel-doodle{width:88px}.hero-tools{padding:7px 8px}.hero-tools .identity-btn{padding:5px 7px}}
+
+
+.day-pill{max-width:min(320px,75vw);overflow:hidden;text-overflow:ellipsis;flex:0 0 auto}
+.meal-card{min-width:0;overflow-wrap:anywhere}
+@media(max-width:760px){.restaurant-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:500px){
+ .event-title-row{flex-wrap:wrap}
+ .event-title-row>div:first-child{min-width:0;flex:1 1 100%}
+ .event-card{overflow-wrap:anywhere}
+}
 @media(prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}
  .doodle-cloud,.doodle-wave,.doodle-star{animation:none!important}
@@ -93,16 +118,7 @@
   <div class="hero">
     <div class="hero-main">
       <div class="hero-intro">
-        <div class="hero-title-line"><h1 id="heroTitleDisplay">紐西蘭南島旅遊手帳</h1></div>
-        <div class="hero-meta-display" id="heroMetaDisplay">
-          <div class="hero-dates" id="heroDatesDisplay">2026/11/22–12/05｜14 天 13 夜</div>
-          <div class="hero-meta-actions">
-            <details class="hero-route"><summary>查看完整路線</summary><div class="hero-route-content" id="heroRouteDisplay">Christchurch → Mt Cook → Twizel → Wānaka → Queenstown → Te Anau → Milford Sound → Lake Tekapo → Christchurch</div></details>
-            <button type="button" class="hero-edit-button" id="editHero">編輯頁首</button>
-          </div>
-        </div>
-      </div>
-    <svg class="travel-doodle" id="heroDoodle" viewBox="0 0 360 106" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <div class="hero-title-line">    <svg class="travel-doodle" id="heroDoodle" viewBox="0 0 360 106" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <g stroke="#313131" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="57" cy="27" r="15" fill="#fff5c7"/>
         <path d="M57 5v-3m-22 25h-4m51 0h-4M41 11l-3-3m35 3 3-3" fill="none"/>
@@ -127,7 +143,16 @@
         <circle cx="332" cy="97" r="2" fill="#313131"/><circle cx="346" cy="97" r="2" fill="#313131"/>
         <path class="doodle-star" d="m243 25 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" fill="#fffdf7"/>
       </g>
-    </svg>
+    </svg><h1 id="heroTitleDisplay">紐西蘭南島旅遊手帳</h1></div>
+        <div class="hero-meta-display" id="heroMetaDisplay">
+          <div class="hero-dates" id="heroDatesDisplay">2026/11/22–12/05｜14 天 13 夜</div>
+          <div class="hero-meta-actions">
+            <details class="hero-route"><summary>查看完整路線</summary><div class="hero-route-content" id="heroRouteDisplay">Christchurch → Mt Cook → Twizel → Wānaka → Queenstown → Te Anau → Milford Sound → Lake Tekapo → Christchurch</div></details>
+            <button type="button" class="hero-edit-button" id="editHero">編輯頁首</button>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="hero-edit-panel hidden" id="heroEditPanel">
       <div class="hero-edit-grid">
@@ -859,3 +884,4 @@ if(TEST_ROOM){const clear=document.createElement('button');clear.className='smal
 </script>
 </body>
 </html>
+
