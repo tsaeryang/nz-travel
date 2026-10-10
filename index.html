@@ -21,6 +21,13 @@
 @media print{.tabs,.day-tools,.event-tools,.photo-tools,.modal,.hero-tools,.backup-grid,.weather-link,.hero-edit-button,.overview-title-edit-button,.overview-title-editor{display:none!important}.panel{display:block}.card{break-inside:avoid;box-shadow:none}}
 
 .restaurant-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.meal-card{border:2px solid var(--ink);border-radius:17px;padding:13px;background:#fff}.restaurant-item{padding:10px 0;border-bottom:2px dashed #c7c1b5}.restaurant-item:last-child{border-bottom:0}.restaurant-item b{display:block;margin-bottom:3px}.source-note{font-size:.76rem;color:#7b6649}.lodging-card{background:#eef7ff;border:3px solid var(--ink);border-radius:20px;padding:16px;margin:18px 0;box-shadow:4px 5px 0 #0002}.lodging-title{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.lodging-title>div{flex:1;min-width:0}.lodging-edit-button{flex:0 0 auto;white-space:nowrap;word-break:keep-all;writing-mode:horizontal-tb;padding-left:10px;padding-right:10px}.daily-check-card{border:3px solid var(--ink);border-radius:18px;background:#eef9e9;padding:14px;margin:12px 0;box-shadow:4px 5px 0 #0002}.daily-check-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}.daily-check-status{margin-top:8px;font-size:.85rem;color:#5b594f}.check-prompt{min-height:240px;font-family:inherit}.status-link{display:inline-flex;text-decoration:none;color:#2b5f44;border:2px solid var(--ink);border-radius:999px;padding:5px 10px;background:#fff;font-weight:800;font-size:.82rem}.accommodation-photo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}.accommodation-photo-grid .event-photo img{aspect-ratio:1/1}.time-select-note{font-size:.8rem;color:#6c6c6c;margin-top:4px}
+
+/* Small static travel doodles: no animation, filters or external assets. */
+.travel-doodle{display:block;width:min(320px,100%);height:auto;margin:0 auto 8px;pointer-events:none}
+.doodle-heading{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.mini-doodle{display:block;width:43px;height:43px;flex:0 0 43px;pointer-events:none}
+@media(max-width:500px){.travel-doodle{width:260px;max-width:100%;margin-bottom:6px}}
+@media print{.travel-doodle,.mini-doodle{display:none}}
 </style>
 <!-- Firebase（多裝置即時同步用） -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js">
@@ -31,6 +38,32 @@
 <body>
 <div class="shell">
   <div class="hero">
+    <svg class="travel-doodle" viewBox="0 0 360 106" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <g stroke="#313131" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="57" cy="27" r="15" fill="#fff5c7"/>
+        <path d="M57 5v-3m-22 25h-4m51 0h-4M41 11l-3-3m35 3 3-3" fill="none"/>
+        <path d="M18 74 79 22l42 52 34-40 41 40" fill="#add9ef"/>
+        <path d="m60 38 19-16 20 25-15-4-8 6-6-10Z" fill="#fffdf7"/>
+        <path d="m139 53 16-19 18 18-11-1-7 7-7-8Z" fill="#fffdf7"/>
+        <path d="M18 76c31-9 48-3 77 0s58-7 94 0c19 4 26 8 38 9-22 12-76 15-112 12S40 92 18 76Z" fill="#cfeee6"/>
+        <path d="M46 83h33m14 7h38m15-7h31" fill="none" stroke="#6b9fa5"/>
+        <path d="M198 73V49m-15 15 15-25 15 25Zm-4 11 19-27 19 27Z" fill="#dff3df"/>
+        <path d="M121 17c-1-7-12-8-16-2-9-3-13 5-9 10h36c5-6-3-13-11-8Z" fill="#fffdf7"/>
+        <path d="M268 88c-8-3-9-11-9-19 0-23 12-42 27-42s28 19 28 42c0 12-6 22-20 24Z" fill="#4b5264"/>
+        <ellipse cx="287" cy="67" rx="19" ry="25" fill="#fffdf7"/>
+        <path d="m263 62-10 13m59-13 10 10" fill="none" stroke-width="6"/>
+        <circle cx="279" cy="51" r="2.2" fill="#313131" stroke="none"/><circle cx="296" cy="51" r="2.2" fill="#313131" stroke="none"/>
+        <path d="m282 57 5 6 6-6Z" fill="#ffd79b"/>
+        <ellipse cx="274" cy="58" rx="4" ry="2.5" fill="#f4b9c6" stroke="none"/><ellipse cx="301" cy="58" rx="4" ry="2.5" fill="#f4b9c6" stroke="none"/>
+        <path d="M265 68c15 7 27 7 43 0v7c-14 7-27 7-43 0Z" fill="#e9d2ef"/>
+        <path d="m299 75-1 14 8 1 2-18" fill="#e9d2ef"/>
+        <path d="M274 91c-9 0-10 6-2 7h10v-6m9 0v6h11c7-2 4-7-5-7" fill="#ffd79b"/>
+        <rect x="326" y="69" width="26" height="25" rx="6" fill="#f5e5f4"/>
+        <path d="M333 68v-5h12v5m-10 5v16m9-16v16" fill="none"/>
+        <circle cx="332" cy="97" r="2" fill="#313131"/><circle cx="346" cy="97" r="2" fill="#313131"/>
+        <path d="m243 25 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" fill="#fffdf7"/>
+      </g>
+    </svg>
     <div class="hero-title-line"><h1 id="heroTitleDisplay">紐西蘭南島旅遊手帳 🐧</h1><button type="button" class="hero-edit-button" id="editHero">✎ 編輯</button></div>
     <div class="hero-meta-display" id="heroMetaDisplay">2026/11/22–12/05｜Christchurch → Mt Cook → Twizel → Wānaka → Queenstown → Te Anau → Milford Sound → Lake Tekapo → Christchurch</div>
     <div class="hero-edit-panel hidden" id="heroEditPanel">
@@ -139,11 +172,11 @@
     </section>
 
     <section id="packing" class="panel">
-      <div class="card green"><div class="timeline-head"><h2>🧳 行李清單</h2><b id="packingProgressText">0 / 0</b></div><div class="progress"><span id="packingProgress" style="width:0%"></span></div><div class="dash"></div><div class="list-add"><div><label>新增行李</label><input id="packingInput" placeholder="例如：國際駕照、防風外套"></div><div><label>負責人</label><select id="packingOwner"></select></div><button id="addPacking" class="small primary">＋新增</button></div><div class="dash"></div><div id="packingList"></div></div>
+      <div class="card green"><div class="timeline-head"><h2 class="doodle-heading"><svg class="mini-doodle" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g stroke="#313131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 12V6h14v6" fill="none"/><rect x="9" y="12" width="30" height="29" rx="7" fill="#e9d2ef"/><path d="M15 18v6m18-6v6" fill="none"/><path d="M19 29q5 5 10 0" fill="none"/><circle cx="14" cy="44" r="2" fill="#313131"/><circle cx="34" cy="44" r="2" fill="#313131"/><path d="m32 15 2 4 4 1-4 2-1 4-2-4-4-1 4-2Z" fill="#fff5c7"/></g></svg><span>🧳 行李清單</span></h2><b id="packingProgressText">0 / 0</b></div><div class="progress"><span id="packingProgress" style="width:0%"></span></div><div class="dash"></div><div class="list-add"><div><label>新增行李</label><input id="packingInput" placeholder="例如：國際駕照、防風外套"></div><div><label>負責人</label><select id="packingOwner"></select></div><button id="addPacking" class="small primary">＋新增</button></div><div class="dash"></div><div id="packingList"></div></div>
     </section>
 
     <section id="shopping" class="panel">
-      <div class="card yellow"><div class="timeline-head"><h2>🛍️ 購物清單</h2><b id="shoppingProgressText">0 / 0</b></div><div class="progress"><span id="shoppingProgress" style="width:0%"></span></div><div class="dash"></div><div class="list-add"><div><label>想買的東西</label><input id="shoppingInput" placeholder="例如：Whittaker’s、蜂蜜、伴手禮"></div><div><label>購買者</label><select id="shoppingOwner"></select></div><button id="addShopping" class="small primary">＋新增</button></div><div class="dash"></div><div id="shoppingList" class="shopping-groups"></div></div>
+      <div class="card yellow"><div class="timeline-head"><h2 class="doodle-heading"><svg class="mini-doodle" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g stroke="#313131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 15-3 27h32l-3-27Z" fill="#cfeee6"/><path d="M17 18V11a7 7 0 0 1 14 0v7" fill="none"/><circle cx="18" cy="27" r="1.5" fill="#313131"/><circle cx="30" cy="27" r="1.5" fill="#313131"/><path d="M20 33q4 4 8 0" fill="none"/><path d="m38 4 1 4 4 1-4 2-1 4-2-4-4-1 4-2Z" fill="#fff5c7"/></g></svg><span>🛍️ 購物清單</span></h2><b id="shoppingProgressText">0 / 0</b></div><div class="progress"><span id="shoppingProgress" style="width:0%"></span></div><div class="dash"></div><div class="list-add"><div><label>想買的東西</label><input id="shoppingInput" placeholder="例如：Whittaker’s、蜂蜜、伴手禮"></div><div><label>購買者</label><select id="shoppingOwner"></select></div><button id="addShopping" class="small primary">＋新增</button></div><div class="dash"></div><div id="shoppingList" class="shopping-groups"></div></div>
     </section>
   </main>
 </div>
