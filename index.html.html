@@ -29,29 +29,63 @@
 @media(max-width:500px){.travel-doodle{width:260px;max-width:100%;margin-bottom:6px}}
 @media print{.travel-doodle,.mini-doodle{display:none}}
 
-/* A quiet header: trip identity, optional route, then a separate control bar. */
-.hero{padding:28px 28px 20px;text-align:left}
-.hero-main{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:28px;align-items:center}
-.hero-intro{min-width:0}
-.hero-title-line{display:block;margin:0}
-.hero-title-line h1{font-size:30px;line-height:1.4;letter-spacing:.04em}
-.hero-meta-display{margin:10px 0 0;max-width:none;line-height:1.6}
-.hero-dates{font-size:.88rem;color:#63593e}
-.hero-meta-actions{display:flex;align-items:flex-start;gap:14px;margin-top:10px}
-.hero-route{min-width:0;flex:1}
-.hero-route summary{width:fit-content;font-size:.82rem;font-weight:700;cursor:pointer;padding:5px 0;color:#4e5548}
-.hero-route-content{margin-top:9px;padding:12px 14px;border:1px solid #9a854f;border-radius:12px;background:#fff9;line-height:1.8;font-size:.85rem;overflow-wrap:anywhere}
-.hero-edit-button{flex:0 0 auto;margin-top:1px;padding:6px 10px;background:#fff9;box-shadow:2px 2px 0 #63593e;border-width:1.5px;font-size:.75rem}
-.hero .travel-doodle{width:100%;height:auto;margin:0;overflow:visible}
-.hero-tools{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;margin-top:22px;padding:14px 16px;background:#fff7;border:1px solid #bba16a;border-radius:16px}
-.hero-identity{display:flex;align-items:center;gap:12px;flex-wrap:wrap;min-width:0}
-.hero-tools .identity-label{font-size:.8rem;color:#63593e}
-.hero-tools .identity-btn{padding:6px 14px;box-shadow:2px 3px 0 #63593e;border-width:2px;font-size:.86rem}
-.hero-utilities{display:flex;gap:16px;align-items:center;justify-content:space-between}
-.hero-utilities #openRate{padding:8px 12px;font-size:.82rem;box-shadow:2px 3px 0 #63593e;border-width:2px}
-.hero-status{display:flex;flex-direction:column;gap:2px;text-align:right;min-width:0}
-.hero-status .save-status{font-size:.7rem;min-width:0;line-height:1.4}
-.hero-edit-panel{max-width:none;margin:18px 0 0}
+/* One balanced masthead: trip identity left, member controls right. */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;padding:20px 24px;text-align:left}
+.hero-main{display:block;position:relative;min-width:0}
+.hero-intro{display:block}
+.hero-title-line{display:flex;align-items:center;justify-content:flex-start;gap:14px;margin:0;min-width:0}
+.hero-title-line h1{margin:0;font-size:25px;line-height:1.35;letter-spacing:.015em;overflow-wrap:anywhere}
+.hero .travel-doodle{display:block;width:96px;height:auto;flex:0 0 auto;margin:0;overflow:visible}
+.hero-meta-display{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0 0 110px;max-width:none;line-height:1.5}
+.hero-dates{font-size:.76rem;color:#6b5b36;letter-spacing:0}
+.hero-meta-actions{display:contents}
+.hero-route{position:static;flex:0 0 auto;min-width:0;padding-left:12px;border-left:1px solid #b4934b77}
+.hero-route summary{display:flex;align-items:center;gap:4px;list-style:none;font-size:.72rem;font-weight:600;cursor:pointer;padding:2px 0;color:#625434;white-space:nowrap}
+.hero-route summary::-webkit-details-marker{display:none}
+.hero-route summary::after{content:'⌄';font-size:.85rem;line-height:1}
+.hero-route[open] summary::after{content:'⌃'}
+.hero-route-content{position:absolute;z-index:10;top:calc(100% + 10px);left:0;width:min(560px,100%);margin:0;padding:14px 16px;border:2px solid var(--ink);border-radius:14px;background:var(--cream);box-shadow:4px 5px 0 #63593e33;font-size:.86rem;line-height:1.8;overflow-wrap:anywhere}
+.hero-tools{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:7px;margin:0;padding:2px 0 2px 22px;background:none;border:0;border-left:1px solid #a58a4555;border-radius:0;min-width:0}
+.hero-identity{display:flex;align-items:center;gap:9px;flex-wrap:nowrap;min-width:0;max-width:100%}
+.hero-tools .identity-label{font-size:.72rem;color:#6b5b36;white-space:nowrap;font-weight:600}
+#identityButtons{display:flex;flex-wrap:nowrap!important;min-width:0;max-width:220px;gap:7px;overflow-x:auto;padding:1px 3px 4px;scrollbar-width:thin}
+.hero-tools .identity-btn{flex:0 0 auto;white-space:nowrap;padding:5px 11px;border-width:2px;box-shadow:2px 2px 0 #63593e;font-size:.8rem}
+.hero-utilities{display:block;align-self:flex-end}
+.hero-status{display:flex;align-items:center;justify-content:flex-end;gap:7px;text-align:right;min-width:0}
+.hero-status .save-status{font-size:.63rem;color:#7b6a42;min-width:0;line-height:1.3}
+.hero-route summary:focus-visible{outline:3px solid #5d849d;outline-offset:4px;border-radius:2px}
+@media(max-width:760px){
+ .hero{display:block;padding:15px 16px 12px}
+ .hero-title-line{gap:10px}
+ .hero-title-line h1{font-size:21px;line-height:1.3;letter-spacing:0}
+ .hero .travel-doodle{width:72px}
+ .hero-meta-display{gap:10px;margin:7px 0 0;flex-wrap:nowrap}
+ .hero-dates{font-size:.69rem;line-height:1.5}
+ .hero-route{padding-left:10px}
+ .hero-route summary{font-size:.68rem}
+ .hero-tools{flex-direction:row;align-items:center;justify-content:space-between;gap:12px;margin-top:11px;padding:9px 0 0;border-left:0;border-top:1px solid #a58a4533}
+ .hero-identity{gap:8px;flex:1}
+ #identityButtons{max-width:100%}
+ .hero-tools .identity-label{font-size:.68rem}
+ .hero-tools .identity-btn{padding:5px 10px;font-size:.76rem}
+ .hero-utilities{align-self:auto;flex:0 1 auto;min-width:0}
+ .hero-status{max-width:115px}
+ .hero-status .save-status{font-size:.6rem}
+ .hero-status #saveStatus{display:none}
+}
+@media(max-width:360px){
+ .hero{padding:13px 13px 11px}
+ .hero-title-line{gap:9px}
+ .hero-title-line h1{font-size:19px}
+ .hero .travel-doodle{width:58px}
+ .hero-meta-display{gap:8px}
+ .hero-dates{font-size:.65rem}
+ .hero-route{padding-left:8px}
+ .hero-tools{gap:8px}
+ .hero-identity{gap:6px}
+ .hero-tools .identity-btn{padding:5px 8px}
+ .hero-status .save-status{font-size:.57rem}
+}
 .doodle-cloud{animation:doodle-float 8s ease-in-out infinite}
 .doodle-wave{transform-box:view-box;transform-origin:312px 62px;animation:doodle-wave 6s ease-in-out infinite}
 .doodle-star{transform-box:fill-box;transform-origin:center;animation:doodle-glow 5s ease-in-out infinite}
@@ -60,40 +94,6 @@
 @keyframes doodle-float{0%,100%{transform:translate(0,0)}50%{transform:translate(5px,-2px)}}
 @keyframes doodle-wave{0%,12%,32%,100%{transform:rotate(0)}18%,26%{transform:rotate(-25deg)}22%,30%{transform:rotate(-8deg)}}
 @keyframes doodle-glow{0%,100%{opacity:.65;transform:scale(.9)}50%{opacity:1;transform:scale(1.08)}}
-/* Keep the artwork beside the title, with identity and currency on one row. */
-.hero{padding:20px 24px 14px}
-.hero-main{display:block}
-.hero-title-line{display:flex;align-items:center;gap:18px}
-.hero .travel-doodle{width:160px;flex:0 0 auto}
-.hero-tools{grid-template-columns:minmax(0,1fr) auto;gap:5px 14px;margin-top:12px;padding:10px 14px}
-.hero-identity{flex-wrap:nowrap;gap:10px}
-.hero-utilities{display:contents}
-.hero-status{grid-column:1/-1;flex-direction:row;justify-content:flex-end;gap:9px}
-#identityButtons{min-width:0;max-width:100%;overflow-x:auto;flex-wrap:nowrap!important;padding:2px 4px 5px;scrollbar-width:thin}
-#identityButtons button{flex:0 0 auto;white-space:nowrap}
-@media(max-width:700px){
- .hero{padding:16px 14px 12px}
- .hero-main{display:block}
- .hero .travel-doodle{width:104px;margin:0}
- .hero-intro{text-align:left}
- .hero-title-line{gap:8px;min-height:54px;justify-content:flex-start}
- .hero-title-line h1{font-size:22px;line-height:1.35;letter-spacing:.025em}
- .hero-meta-display{margin-top:7px}
- .hero-dates{font-size:.75rem}
- .hero-meta-actions{justify-content:space-between;gap:12px;margin-top:7px}
- .hero-route{flex:1;max-width:100%}
- .hero-route summary{margin:0;font-size:.76rem}
- .hero-route-content{text-align:left;font-size:.82rem}
- .hero-tools{gap:4px 8px;margin-top:10px;padding:8px 10px}
- .hero-identity{justify-content:flex-start;gap:6px}
- .hero-tools .identity-label{font-size:.72rem;white-space:nowrap}
- .hero-tools .identity-btn{padding:5px 8px;font-size:.76rem;box-shadow:2px 2px 0 #63593e}
- .hero-utilities #openRate{padding:7px 8px;font-size:.74rem;white-space:nowrap}
- .hero-status .save-status{font-size:.66rem}
-}
-@media(max-width:360px){.hero{padding-left:12px;padding-right:12px}.hero-title-line h1{font-size:20px}.hero-title-line{gap:6px}.hero .travel-doodle{width:88px}.hero-tools{padding:7px 8px}.hero-tools .identity-btn{padding:5px 7px}}
-
-
 .day-pill{max-width:min(320px,75vw);overflow:hidden;text-overflow:ellipsis;flex:0 0 auto}
 .meal-card{min-width:0;overflow-wrap:anywhere}
 @media(max-width:760px){.restaurant-grid{grid-template-columns:minmax(0,1fr)}}
@@ -147,24 +147,16 @@
         <div class="hero-meta-display" id="heroMetaDisplay">
           <div class="hero-dates" id="heroDatesDisplay">2026/11/22–12/05｜14 天 13 夜</div>
           <div class="hero-meta-actions">
-            <details class="hero-route"><summary>查看完整路線</summary><div class="hero-route-content" id="heroRouteDisplay">Christchurch → Mt Cook → Twizel → Wānaka → Queenstown → Te Anau → Milford Sound → Lake Tekapo → Christchurch</div></details>
-            <button type="button" class="hero-edit-button" id="editHero">編輯頁首</button>
+            <details class="hero-route"><summary aria-label="查看完整路線">路線</summary><div class="hero-route-content" id="heroRouteDisplay">Christchurch → Mt Cook → Twizel → Wānaka → Queenstown → Te Anau → Milford Sound → Lake Tekapo → Christchurch</div></details>
           </div>
+
         </div>
       </div>
 
     </div>
-    <div class="hero-edit-panel hidden" id="heroEditPanel">
-      <div class="hero-edit-grid">
-        <div><label>手帳標題</label><input id="heroTitleInput" value="紐西蘭南島旅遊手帳"></div>
-        <div><label>旅行日期</label><input id="heroDatesInput" value="2026/11/22–12/05"></div>
-        <div class="full"><label>主要路線</label><input id="heroRouteInput" value="Christchurch → Mt Cook → Twizel → Wānaka → Queenstown → Te Anau → Milford Sound → Lake Tekapo → Christchurch"></div>
-      </div>
-      <div class="modal-actions"><button type="button" class="small" id="cancelHeroEdit">取消</button><button type="button" class="small primary" id="saveHeroEdit">儲存</button></div>
-    </div>
     <div class="hero-tools">
       <div class="hero-identity"><span class="identity-label">目前身分</span><div id="identityButtons" class="toolbar"></div></div>
-      <div class="hero-utilities"><button class="small primary" id="openRate">💱 匯率換算</button><div class="hero-status"><span class="save-status" id="saveStatus">已儲存</span><span class="save-status" id="syncStatus">雲端連線中…</span></div></div>
+      <div class="hero-utilities"><div class="hero-status"><span class="save-status" id="saveStatus">已儲存</span><span class="save-status" id="syncStatus">雲端連線中…</span></div></div>
     </div>
   </div>
   <div class="tabs">
@@ -272,7 +264,6 @@
 
 <div class="modal" id="lodgingModal"><div class="modal-card"><h2>🛏️ 編輯本日住宿</h2><div class="form-grid"><div><label>住宿名稱</label><input id="lodgingName" placeholder="尚未預訂"></div><div><label>地址</label><input id="lodgingAddress"></div><div class="full"><label>訂房／官網連結</label><input id="lodgingLink" placeholder="https://..."></div><div class="full"><label>入住須知與備註</label><textarea id="lodgingNote"></textarea></div><div class="full"><label>訂房截圖</label><input id="lodgingPhotos" type="file" accept="image/*" multiple><div id="lodgingPhotoGallery" class="accommodation-photo-grid"></div></div></div><div class="modal-actions"><button class="small" id="cancelLodging">取消</button><button class="small primary" id="saveLodging">儲存</button></div></div></div>
 <div class="modal" id="dailyCheckModal"><div class="modal-card"><h2>🔎 今日行程確認中心</h2><p class="muted">靜態網頁無法安全地直接呼叫 ChatGPT 或 Google Places。這裡會整理今日行程成查核指令；按一下複製後開啟 ChatGPT，即可請我上網核對店家營業、活動取消、天氣、道路與 DOC 公告。</p><label>給 ChatGPT 的查核指令</label><textarea id="dailyCheckPrompt" class="check-prompt"></textarea><div class="toolbar"><button class="small primary" id="copyDailyCheck">複製查核指令</button><a class="external-link" href="https://chatgpt.com/" target="_blank" rel="noreferrer">開啟 ChatGPT ↗</a></div><div class="dash"></div><label>查核結果／臨時調整</label><textarea id="dailyCheckNote" placeholder="把 ChatGPT 查到的結果或當天調整貼在這裡"></textarea><div class="modal-actions"><button class="small" id="cancelDailyCheck">關閉</button><button class="small primary" id="saveDailyCheck">儲存查核結果</button></div></div></div>
-<div class="modal" id="rateModal"><div class="modal-card"><h2>💱 匯率換算</h2><div class="form-grid"><div><label>幣別</label><select id="rateCurrency"></select></div><div><label>原幣金額</label><input id="rateAmount" type="number" value="100" min="0" step="0.01"></div><div><label>匯率（1 外幣＝幾 TWD）</label><input id="rateValue" type="number" min="0" step="any"></div><div><label>換算結果</label><div class="stat"><b id="rateResult">$0</b></div></div><div class="full rate-status" id="rateModalStatus"></div></div><div class="modal-actions"><button class="small success" id="refreshRate">重新取得匯率</button><button class="small" id="closeRate">關閉</button></div></div></div>
 <div class="modal" id="textEditModal"><div class="modal-card" style="max-width:500px"><h2 id="textEditTitle">編輯</h2><form id="textEditForm"><label for="textEditName">名稱</label><input id="textEditName" required><div id="textEditNoteBlock"><label for="textEditNote">備註</label><textarea id="textEditNote"></textarea></div><div class="modal-actions"><button type="button" id="textEditCancel">取消</button><button type="submit" class="primary">儲存內容</button></div></form></div></div>
 <div class="modal" id="confirmModal"><div class="modal-card" style="max-width:440px"><h2>確認操作</h2><p id="confirmMessage" style="line-height:1.7;margin:8px 0 18px"></p><div class="modal-actions"><button type="button" class="small" id="cancelConfirm">取消</button><button type="button" class="small danger" id="runConfirm">確定刪除</button></div></div></div>
 <div class="modal image-viewer" id="imageModal"><div class="modal-card"><div class="modal-actions" style="margin-top:0"><button class="small" id="closeImage">關閉</button></div><img id="largeImage" alt="訂單截圖" onerror="this.style.display='none';$('imageLoadError').classList.remove('hidden')"><div id="imageLoadError" class="muted hidden" style="padding:24px;text-align:center">😥 這張照片目前無法顯示。<br>可能是這張照片是在舊裝置上傳、還沒同步到雲端，或圖片網址已經失效。<br>可以到原本上傳照片的那台裝置，重新加一次這張照片。</div></div></div>
@@ -652,7 +643,7 @@ $('runConfirm').onclick=()=>{const action=pendingConfirmAction;closeAppConfirm()
 $('confirmModal').onclick=e=>{if(e.target===$('confirmModal'))closeAppConfirm()};
 
 function populateSelect(el,values){el.innerHTML=values.map(v=>`<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join('')}
-['sharedCurrency','personalCurrency','rateCurrency'].forEach(id=>populateSelect($(id),CURRENCIES));
+['sharedCurrency','personalCurrency'].forEach(id=>populateSelect($(id),CURRENCIES));
 ['sharedCategory','personalCategory'].forEach(id=>populateSelect($(id),CATEGORIES));
 populateSelect($('editDayPlace'),WEATHER_PLACES);buildTimeOptions();
 
@@ -682,7 +673,7 @@ tabs.forEach(t=>t.onclick=()=>showPanel(t.dataset.panel));
 function overviewPhotoArray(section){const k=section+'Photos';return overview[k]||(overview[k]=[])}
 function renderOverviewPhotos(section){const id='ov'+section[0].toUpperCase()+section.slice(1)+'Photos';const el=$(id);if(el)el.innerHTML=renderPhotoGrid(overviewPhotoArray(section),'overview-'+section,0)}
 function renderOverview(){
- heroTitleInput.value=overview.title||defaultOverview.title;heroDatesInput.value=overview.dates||'';heroRouteInput.value=overview.route||'';heroTitleDisplay.textContent=overview.title||defaultOverview.title;heroDatesDisplay.textContent=overview.dates||'';heroRouteDisplay.textContent=overview.route||'尚未填寫路線';
+ heroTitleDisplay.textContent=overview.title||defaultOverview.title;heroDatesDisplay.textContent=(overview.dates||'').replace(/[・·]\s*南島遊覽\s*\d+\s*天\s*$/u,'');heroRouteDisplay.textContent=overview.route||'尚未填寫路線';
  const keyTitle=overview.keyTitle||'簽證注意事項與建議 App',flexTitle=overview.flexTitle||'彈性原則',memoTitle=overview.memoTitle||'重要內容';ovKeyTitle.value=keyTitle;ovFlexTitle.value=flexTitle;ovMemoTitle.value=memoTitle;ovKeyTitleDisplay.textContent=keyTitle;ovFlexTitleDisplay.textContent=flexTitle;ovMemoTitleDisplay.textContent=memoTitle;ovKey.value=overview.key||'';ovFlex.value=overview.flex||'';ovMemo.value=overview.memo||'';
  refreshMemberLabels();['key','flex','memo'].forEach(renderOverviewPhotos);document.title=overview.title||defaultOverview.title;
 }
@@ -697,7 +688,6 @@ function renderOverview(){
 })();
 
 function persistOverview(){saveJSON(KEYS.overview,overview);renderOverview()}
-editHero.onclick=()=>heroEditPanel.classList.remove('hidden');cancelHeroEdit.onclick=()=>{heroEditPanel.classList.add('hidden');renderOverview()};saveHeroEdit.onclick=()=>{overview.title=heroTitleInput.value.trim()||defaultOverview.title;overview.dates=heroDatesInput.value.trim();overview.route=heroRouteInput.value.trim();overview.sectionUpdatedAt=overview.sectionUpdatedAt||{};overview.sectionUpdatedAt.hero=Date.now();heroEditPanel.classList.add('hidden');persistOverview()};
 addMember.onclick=()=>{overview.members.push({id:'m-'+uid(),name:'新成員',note:''});renderMemberEditor();const rows=memberEditorList.querySelectorAll('[data-member-row]');rows[rows.length-1]?.querySelector('[data-member-name]')?.select()};
 window.removeMember=id=>{if(members().length<=1){appNotice('至少要保留一位旅行成員');return}appConfirm(`確定移除 ${memberLabel(id)}？既有記帳紀錄仍會保留，但之後不再出現在選單中。`,()=>{overview.members=members().filter(m=>m.id!==id);overview.sectionUpdatedAt.members=Date.now();if(currentIdentity===id)currentIdentity=members()[0]?.id||'';if(activePerson===id)activePerson=currentIdentity;persistOverview();renderExpenses();renderPersonal();renderChecklist('packing');renderChecklist('shopping')},'確定移除')};
 saveMembers.onclick=()=>{overview.members=[...memberEditorList.querySelectorAll('[data-member-row]')].map((row,i)=>({id:row.dataset.memberRow,updatedAt:Date.now(),name:row.querySelector('[data-member-name]').value.trim()||`成員 ${i+1}`,note:row.querySelector('[data-member-note]').value.trim()}));overview.sectionUpdatedAt.members=Date.now();persistOverview();renderExpenses();renderPersonal();renderChecklist('packing');renderChecklist('shopping')};
@@ -863,11 +853,6 @@ addPacking.onclick=()=>{const t=packingInput.value.trim();if(!t)return;packing.p
 addShopping.onclick=()=>{const t=shoppingInput.value.trim();if(!t)return;shopping.push({id:uid(),updatedAt:Date.now(),t,done:false,owner:shoppingOwner.value,addedBy:currentIdentity,photos:[]});shoppingInput.value='';saveJSON(KEYS.shopping,shopping,true);renderChecklist('shopping')};
 packingInput.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();addPacking.click()}};shoppingInput.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();addShopping.click()}};
 renderChecklist('packing');renderChecklist('shopping');
-
-openRate.onclick=()=>{rateCurrency.value='NZD';rateAmount.value=100;rateModal.classList.add('show');updateRateModal(false)};closeRate.onclick=()=>rateModal.classList.remove('show');rateModal.onclick=e=>{if(e.target===rateModal)rateModal.classList.remove('show')};
-async function updateRateModal(force){const c=rateCurrency.value;rateModalStatus.textContent='取得匯率中…';const res=await fetchRate(c,force);rateValue.value=res.rate;rateModalStatus.textContent=res.live?'● 已取得即時匯率':'● 使用上次／約略匯率，可手動修改';rateModalStatus.className='full rate-status '+(res.live?'live':'fallback');calcRateModal()}
-function calcRateModal(){rateResult.textContent=money((Number(rateAmount.value)||0)*(Number(rateValue.value)||0));rates[rateCurrency.value]=Number(rateValue.value)||1;saveJSON(KEYS.rates,rates)}
-rateCurrency.onchange=()=>updateRateModal(true);rateAmount.oninput=calcRateModal;rateValue.oninput=calcRateModal;refreshRate.onclick=()=>updateRateModal(true);
 
 exportData.onclick=()=>{const photos={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(PHOTO_PREFIX))photos[k]=localStorage.getItem(k)}const data={version:3,exportedAt:new Date().toISOString(),overview,days,expenses,personalExpenses,packing,shopping,rates,currentIdentity,photos};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='chia-tsae-nz-travel-backup.json';a.click();URL.revokeObjectURL(a.href)};
 function restoredRecords(before,after,now){const incoming=new Map(after.map(x=>[x.id,{...x,updatedAt:now}]));for(const x of before||[])if(x.id&&!incoming.has(x.id))incoming.set(x.id,{...x,deleted:true,updatedAt:now});return [...incoming.values()]}
