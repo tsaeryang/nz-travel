@@ -331,7 +331,7 @@ function mergeDays(localDays,remoteDays){
   const winner=mergeById(localDays,remoteDays);
   return winner.map(d=>{
     const l=localById.get(d.id),r=remoteById.get(d.id);
-    if(l&&r)return{...d,events:sortEvents(mergeById(l.events||[],r.events||[]))};
+    if(l&&r)return normalizeDay({...d,events:mergeById(l.events||[],r.events||[])});
     return d;
   });
 }
@@ -438,8 +438,10 @@ function dedupeEvents(events){
     const sig=(e.time||'')+'|'+(e.title||'')+'|'+(e.desc||'');
     if(seenIndex.has(sig)){
       const idx=seenIndex.get(sig),prev=out[idx];
-      const photos=[...new Set([...(prev.photos||[]),...(e.photos||[])])];
-      out[idx]=(e.updatedAt||0)>=(prev.updatedAt||0)?{...e,photos}:{...prev,photos};
+      const photos=[...new Set([...(prev.photos||[]),...(e.photos||[])])].sort();
+      const id=[prev.id,e.id].filter(Boolean).sort()[0];
+      const newer=(e.updatedAt||0)>(prev.updatedAt||0)||((e.updatedAt||0)===(prev.updatedAt||0)&&String(e.id)<String(prev.id));
+      out[idx]={...(newer?e:prev),id,photos};
     }else{seenIndex.set(sig,out.length);out.push(e)}
   });
   return out;
