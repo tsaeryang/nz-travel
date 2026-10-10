@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>紐西蘭南島旅遊手帳</title>
-<!-- build: 2026-10-10-full-audit-v1 -->
-<!-- BUILD_ID: 2026-10-10-full-audit-v1 -->
-<meta name="build-id" content="2026-10-10-full-audit-v1" />
+<!-- build: 2026-10-10-centered-route-repair-v2 -->
+<!-- BUILD_ID: 2026-10-10-centered-route-repair-v2 -->
+<meta name="build-id" content="2026-10-10-centered-route-repair-v2" />
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -30,13 +30,13 @@
 @media print{.travel-doodle,.mini-doodle{display:none}}
 
 /* One balanced masthead: trip identity left, member controls right. */
-.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;padding:20px 24px;text-align:left}
-.hero-main{display:block;position:relative;min-width:0}
+.hero{display:grid;grid-template-columns:194px minmax(0,1fr) 194px;align-items:center;gap:18px;padding:18px 24px;text-align:left}
+.hero-main{grid-column:2;display:block;position:relative;min-width:0}
 .hero-intro{display:block}
-.hero-title-line{display:flex;align-items:center;justify-content:flex-start;gap:14px;margin:0;min-width:0}
-.hero-title-line h1{margin:0;font-size:25px;line-height:1.35;letter-spacing:.015em;overflow-wrap:anywhere}
-.hero .travel-doodle{display:block;width:96px;height:auto;flex:0 0 auto;margin:0;overflow:visible}
-.hero-meta-display{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0 0 110px;max-width:none;line-height:1.5}
+.hero-title-line{display:flex;align-items:center;justify-content:center;gap:14px;margin:0;min-width:0}
+.hero-title-line h1{margin:0;font-size:27px;line-height:1.35;letter-spacing:.015em;overflow-wrap:anywhere}
+.hero .travel-doodle{display:block;width:140px;height:auto;flex:0 0 auto;margin:0;overflow:visible}
+.hero-meta-display{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:6px 0 0;max-width:none;line-height:1.5}
 .hero-dates{font-size:.76rem;color:#6b5b36;letter-spacing:0}
 .hero-meta-actions{display:contents}
 .hero-route{position:static;flex:0 0 auto;min-width:0;padding-left:12px;border-left:1px solid #b4934b77}
@@ -45,7 +45,7 @@
 .hero-route summary::after{content:'⌄';font-size:.85rem;line-height:1}
 .hero-route[open] summary::after{content:'⌃'}
 .hero-route-content{position:absolute;z-index:10;top:calc(100% + 10px);left:0;width:min(560px,100%);margin:0;padding:14px 16px;border:2px solid var(--ink);border-radius:14px;background:var(--cream);box-shadow:4px 5px 0 #63593e33;font-size:.86rem;line-height:1.8;overflow-wrap:anywhere}
-.hero-tools{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:7px;margin:0;padding:2px 0 2px 22px;background:none;border:0;border-left:1px solid #a58a4555;border-radius:0;min-width:0}
+.hero-tools{grid-column:3;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:7px;margin:0;padding:0;background:none;border:0;border-radius:0;min-width:0}
 .hero-identity{display:flex;align-items:center;gap:9px;flex-wrap:nowrap;min-width:0;max-width:100%}
 .hero-tools .identity-label{font-size:.72rem;color:#6b5b36;white-space:nowrap;font-weight:600}
 #identityButtons{display:flex;flex-wrap:nowrap!important;min-width:0;max-width:220px;gap:7px;overflow-x:auto;padding:1px 3px 4px;scrollbar-width:thin}
@@ -54,11 +54,11 @@
 .hero-status{display:flex;align-items:center;justify-content:flex-end;gap:7px;text-align:right;min-width:0}
 .hero-status .save-status{font-size:.63rem;color:#7b6a42;min-width:0;line-height:1.3}
 .hero-route summary:focus-visible{outline:3px solid #5d849d;outline-offset:4px;border-radius:2px}
-@media(max-width:760px){
+@media(max-width:980px){
  .hero{display:block;padding:15px 16px 12px}
  .hero-title-line{gap:10px}
  .hero-title-line h1{font-size:21px;line-height:1.3;letter-spacing:0}
- .hero .travel-doodle{width:72px}
+ .hero .travel-doodle{width:104px}
  .hero-meta-display{gap:10px;margin:7px 0 0;flex-wrap:nowrap}
  .hero-dates{font-size:.69rem;line-height:1.5}
  .hero-route{padding-left:10px}
@@ -77,7 +77,7 @@
  .hero{padding:13px 13px 11px}
  .hero-title-line{gap:9px}
  .hero-title-line h1{font-size:19px}
- .hero .travel-doodle{width:58px}
+ .hero .travel-doodle{width:76px}
  .hero-meta-display{gap:8px}
  .hero-dates{font-size:.65rem}
  .hero-route{padding-left:8px}
@@ -271,7 +271,7 @@
 
 <script>
 (function(){
-  const CURRENT_BUILD='2026-10-10-full-audit-v1';
+  const CURRENT_BUILD='2026-10-10-centered-route-repair-v2';
   try{
     const bustUrl=location.pathname+'?_cb='+Date.now()+Math.random().toString(36).slice(2);
     fetch(bustUrl,{cache:'no-store'}).then(r=>r.text()).then(html=>{
@@ -383,6 +383,7 @@ function reconcileDay(old){
     return {...e,id:prev?.id||stableId('ev',fresh.id+'|'+e.title),photos:[...new Set([...(prev?.photos||[]),...(e.photos||[])])],updatedAt:Math.max(MIGRATION_TIME,prev?.updatedAt||0)};
   });
   const custom=(old.events||[]).filter(e=>!known.has(e.title)&&!fresh.events.some(x=>x.title===e.title));
+  const retired=(old.events||[]).filter(e=>known.has(e.title)&&!fresh.events.some(x=>x.title===e.title)).map(e=>({...e,deleted:true,updatedAt:Math.max(MIGRATION_TIME,e.updatedAt||0)}));
   const retiredPhotos=(old.events||[]).filter(e=>!matched.has(e.id)&&known.has(e.title)).flatMap(e=>e.photos||[]);
   const restaurants={};
   for(const meal of ['breakfast','lunch','dinner','snacks']){
@@ -395,7 +396,7 @@ function reconcileDay(old){
     restaurants[meal]=dedupeRestaurants([...(fresh.restaurants[meal]||[]),...previous]);
   }
   const lodging=fresh.lodging===null?null:{...fresh.lodging,address:old.lodging?.address||fresh.lodging.address,link:old.lodging?.link||fresh.lodging.link,note:old.lodging?.note||fresh.lodging.note,photos:[...new Set([...(old.lodging?.photos||[]),...(fresh.lodging?.photos||[])])]};
-  return normalizeDay({...old,title:fresh.title,place:fresh.place,events:[...events,...custom],restaurants,lodging,photos:[...new Set([...(old.photos||[]),...retiredPhotos])],contentRevision:CONTENT_REVISION,updatedAt:Math.max(MIGRATION_TIME,old.updatedAt||0)});
+  return normalizeDay({...old,title:fresh.title,place:fresh.place,events:[...events,...custom,...retired],restaurants,lodging,photos:[...new Set([...(old.photos||[]),...retiredPhotos])],contentRevision:CONTENT_REVISION,updatedAt:Math.max(MIGRATION_TIME,old.updatedAt||0)});
 }
 function reconcileDays(arr){return upgradeRestaurantDays((arr||[]).map(reconcileDay))}
 function reconcileOverview(o){if(o.contentRevision>=CONTENT_REVISION)return o;return{...o,route:defaultOverview.route,dates:defaultOverview.dates,contentRevision:CONTENT_REVISION,sectionUpdatedAt:{...o.sectionUpdatedAt,hero:Math.max(MIGRATION_TIME,o.sectionUpdatedAt?.hero||0)}}}
@@ -436,9 +437,9 @@ if(SYNC_ENABLED){
   try{
     firebase.initializeApp(firebaseConfig);
     fbDb=firebase.database();
-    firebase.auth().signInAnonymously().catch(e=>{console.error('匿名登入失敗，改用原本方式同步',e);initSync()});
+    firebase.auth().signInAnonymously().catch(e=>{setSyncStatus('登入失敗，已存本機');console.error('匿名登入失敗',e)});
     firebase.auth().onAuthStateChanged(user=>{if(user)initSync()});
-    setTimeout(()=>{if(!syncStarted){console.warn('登入逾時，改用原本方式同步');initSync()}},4000);
+    setTimeout(()=>{if(!syncStarted)setSyncStatus('等待登入，已存本機')},4000);
   }
   catch(e){console.error('Firebase 初始化失敗',e)}
 }
@@ -447,7 +448,7 @@ function syncKeyPath(key){return SYNC_ROOT+'/'+String(key).replace(/[.#$/\[\]]/g
 let qaDisposed=false;
 const syncKeyReady={};
 function syncPush(key,value){
-  if(qaDisposed||!SYNC_ENABLED||!fbDb||key===KEYS.identity)return;
+  if(qaDisposed||!SYNC_ENABLED||!fbDb||!firebase.auth().currentUser||key===KEYS.identity)return;
   if(!syncKeyReady[key])return;
   let json;try{json=JSON.stringify(value)}catch(e){return}
   _syncLastValue[key]=json;
@@ -513,7 +514,7 @@ function applyRemoteUpdate(key,value){
 }
 function initSync(){
   if(!SYNC_ENABLED){console.warn('尚未設定 firebaseConfig，目前僅使用本機儲存，不會跨裝置同步。');return}
-  if(!fbDb||syncStarted)return;
+  if(!fbDb||!firebase.auth().currentUser||syncStarted)return;
   syncStarted=true;fbDb.ref('.info/connected').on('value',snap=>setSyncStatus(snap.val()?'雲端已連線':'離線，已存本機'));
   Object.values(KEYS).forEach(key=>{
     if(key===KEYS.identity)return;
@@ -570,6 +571,21 @@ function getTimeValue(){
   return h.value+':'+m.value;
 }
 function stableId(prefix,basis){let h=0;for(let i=0;i<basis.length;i++){h=(h*31+basis.charCodeAt(i))|0}return prefix+'-'+Math.abs(h).toString(36)}
+// Keep tombstones for known pre-update activities so older tabs cannot revive them.
+const ROUTE_REPAIR_TIME=Date.UTC(2026,9,10,7,12);
+const RETIRED_EVENT_FINGERPRINTS={"d11-23":["legacy-nblfci","legacy-qio9h8"],"d11-24":["legacy-4frumm","legacy-73y0os","legacy-gsarmt","legacy-ncc56a","legacy-w7rt60"],"d11-26":["legacy-3mp712","legacy-48dyvw","legacy-9diovv","legacy-ada9r7","legacy-c8yp14","legacy-g2tx1w","legacy-i7w7vg","legacy-i9eyqs","legacy-i9ih26","legacy-nakz7b","legacy-otdley","legacy-v7wl20","legacy-wue71k","legacy-y3d9rn"],"d11-27":["legacy-7f1wh9","legacy-8tan57","legacy-bexks6","legacy-e6o27g","legacy-gxslqz","legacy-h8xqob","legacy-i6qk4n","legacy-juy3cz","legacy-jzl1co","legacy-k934pg","legacy-ogjj7s","legacy-ptndbc","legacy-scq976","legacy-ubpazo","legacy-vn6zh1"],"d11-28":["legacy-36lp55","legacy-4t8qvw","legacy-8mny97","legacy-bzo9bk","legacy-e7lyyn","legacy-mbuhn3","legacy-rv13o1","legacy-v1ubjj","legacy-vmwecu","legacy-vzwntw","legacy-ywwzfh"],"d11-29":["legacy-4ceb7r","legacy-6zynmx","legacy-9tb8au","legacy-hsqf4","legacy-or8a89","legacy-xujj2h"],"d11-30":["legacy-28s9av","legacy-8ko2pm","legacy-b8wabi","legacy-cqth1o","legacy-l0rrsu","legacy-uwkra7","legacy-x20mh9"],"d12-1":["legacy-9y84me","legacy-e3plbo","legacy-ko06qe","legacy-nr4o5t","legacy-nxti9s","legacy-quisuj","legacy-rqdyry","legacy-sied80","legacy-subpjt","legacy-v9cjuk"],"d12-2":["legacy-2tcl6q","legacy-3fhbse","legacy-7uw605","legacy-8m471e","legacy-darj3g","legacy-f7y6k0","legacy-j55luf","legacy-jjmwj9","legacy-k3w8fk","legacy-k43riz","legacy-lna3ey","legacy-pdefun","legacy-sbxgiv","legacy-tjg5g3","legacy-v4xcn6","legacy-xhhsij","legacy-yh3d5w"],"d12-3":["legacy-2co6ob","legacy-41lvzc","legacy-8gbu4f","legacy-bgvsx3","legacy-dh81zb","legacy-imjs9z","legacy-kt1bsl","legacy-lcxz0j","legacy-oxx114","legacy-pagye2","legacy-rmxpaq","legacy-rq0v7x","legacy-vqc4ax","legacy-z02o6j"],"d12-4":["legacy-8arfl7","legacy-8g2h4m","legacy-cz1khp","legacy-ieh6fl","legacy-pmciq1","legacy-qbugnn","legacy-qlfajp"],"d12-5":["legacy-bebc5l","legacy-j56ql4"]};
+function legacyEventFingerprint(e){return stableId('legacy',JSON.stringify([e.time||'',e.title||'',e.desc||'',e.map||'',e.link||'',e.bg||'']))}
+function retireLegacyEvents(d){
+ const retired=RETIRED_EVENT_FINGERPRINTS[d.id];if(!retired)return d;
+ let changed=false;const archived=[];
+ const events=(d.events||[]).map(e=>{
+  if((e.updatedAt||0)>MIGRATION_TIME||!retired.includes(legacyEventFingerprint(e)))return e;
+  changed=true;archived.push(...(e.photos||[]));
+  return {...e,deleted:true,routeRetired:1,updatedAt:Math.max(ROUTE_REPAIR_TIME,e.updatedAt||0)};
+ });
+ if(!changed)return d;
+ return {...d,events,photos:[...new Set([...(d.photos||[]),...archived])],routeRepairRevision:1,updatedAt:Math.max(ROUTE_REPAIR_TIME,d.updatedAt||0)};
+}
 function dedupeEvents(events){
   const seenIndex=new Map(),out=[];
   events.forEach(e=>{
@@ -584,7 +600,7 @@ function dedupeEvents(events){
   });
   return out;
 }
-function normalizeDay(d){const restaurants=upgradeRestaurantMeals(d),hasCurated=Object.values(restaurants).flat().some(r=>r.note===RESTAURANT_RECOMMENDATIONS[restaurantKey(r.name)]?.note),copyChanged=JSON.stringify(restaurants)!==JSON.stringify(d.restaurants||{})||hasCurated&&!d.restaurantCopyRevision;return{...d,...(hasCurated?{restaurantCopyRevision:1}:{}),id:d.id||stableId('day',(d.date||'')+'|'+(d.title||'')),updatedAt:copyChanged?Math.max(RESTAURANT_COPY_TIME,d.updatedAt||1):d.updatedAt||1,place:d.place||inferPlace(d.title),events:sortEvents(dedupeEvents((d.events||[]).map(e=>({...e,id:e.id||stableId('ev',(e.time||'')+'|'+(e.title||'')+'|'+(e.desc||'').slice(0,50)),updatedAt:e.updatedAt||1,link:e.link||'',addedBy:e.addedBy||'Tsae',photos:e.photos||[]})))),restaurants,lodging:d.lodging===null?null:{name:'尚未預訂',address:'',link:'',note:'',photos:[],...(d.lodging||{})},dailyCheck:{note:'',checkedAt:'',...(d.dailyCheck||{})},photos:d.photos||[]}}
+function normalizeDay(d){d=retireLegacyEvents(d);const restaurants=upgradeRestaurantMeals(d),hasCurated=Object.values(restaurants).flat().some(r=>r.note===RESTAURANT_RECOMMENDATIONS[restaurantKey(r.name)]?.note),copyChanged=JSON.stringify(restaurants)!==JSON.stringify(d.restaurants||{})||hasCurated&&!d.restaurantCopyRevision;return{...d,...(hasCurated?{restaurantCopyRevision:1}:{}),id:d.id||stableId('day',(d.date||'')+'|'+(d.title||'')),updatedAt:copyChanged?Math.max(RESTAURANT_COPY_TIME,d.updatedAt||1):d.updatedAt||1,place:d.place||inferPlace(d.title),events:sortEvents(dedupeEvents((d.events||[]).map(e=>({...e,id:e.id||stableId('ev',(e.time||'')+'|'+(e.title||'')+'|'+(e.desc||'').slice(0,50)),updatedAt:e.updatedAt||1,link:e.link||'',addedBy:e.addedBy||'Tsae',photos:e.photos||[]})))),restaurants,lodging:d.lodging===null?null:{name:'尚未預訂',address:'',link:'',note:'',photos:[],...(d.lodging||{})},dailyCheck:{note:'',checkedAt:'',...(d.dailyCheck||{})},photos:d.photos||[]}}
 function normalizeExpense(x){const amountTwd=x.amountTwd!=null?Number(x.amountTwd):Number(x.twd!=null?x.twd:x.amount||0);return{id:x.id||stableId('exp',(x.date||'')+'|'+(x.item||x.name||'')+'|'+(x.originalAmount!=null?x.originalAmount:x.amount||0)+'|'+(x.payer||x.paidBy||'')),updatedAt:x.updatedAt||1,date:x.date||'',item:x.item||x.name||'',originalAmount:Number(x.originalAmount!=null?x.originalAmount:x.amount||0),currency:x.currency||'TWD',rate:Number(x.rate||1),amountTwd,payer:x.payer||x.paidBy||'Chia',category:CATEGORIES.includes(x.category)?x.category:'其他',split:x.split||'equal',phase:x.phase||'pretrip',note:x.note||'',addedBy:x.addedBy||x.payer||'Chia',deleted:!!x.deleted}}
 function normalizePersonal(x){return{id:x.id||stableId('per',(x.date||'')+'|'+(x.item||x.name||'')+'|'+(x.originalAmount!=null?x.originalAmount:x.amount||0)+'|'+(x.owner||'')),updatedAt:x.updatedAt||1,owner:x.owner||'Chia',date:x.date||'',item:x.item||x.name||'',category:CATEGORIES.includes(x.category)?x.category:'其他',originalAmount:Number(x.originalAmount!=null?x.originalAmount:x.amount||0),currency:x.currency||'TWD',rate:Number(x.rate||1),amountTwd:Number(x.amountTwd!=null?x.amountTwd:x.twd!=null?x.twd:x.amount||0),note:x.note||'',addedBy:x.addedBy||x.owner||'Chia',deleted:!!x.deleted}}
 function normalizeCheck(x){return{id:x.id||stableId('chk',(x.t||x.text||'')+'|'+(x.owner||'')),updatedAt:x.updatedAt||1,t:x.t||x.text||'',done:!!x.done,owner:x.owner||'共同',addedBy:x.addedBy||'Tsae',photos:Array.isArray(x.photos)?x.photos:[],deleted:!!x.deleted}}
