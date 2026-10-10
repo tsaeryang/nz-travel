@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>紐西蘭南島旅遊手帳</title>
-<!-- build: 2026-10-10-centered-route-repair-v2 -->
-<!-- BUILD_ID: 2026-10-10-centered-route-repair-v2 -->
-<meta name="build-id" content="2026-10-10-centered-route-repair-v2" />
+<!-- build: 2026-10-10-member-illustrations-v3 -->
+<!-- BUILD_ID: 2026-10-10-member-illustrations-v3 -->
+<meta name="build-id" content="2026-10-10-member-illustrations-v3" />
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -106,6 +106,97 @@
  html{scroll-behavior:auto}
  .doodle-cloud,.doodle-wave,.doodle-star{animation:none!important}
 }
+/* Original layered character scenes. All selectors stay inside the member area. */
+.member-art-section{background:#f8f5eb;padding:20px!important}
+.member-art-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.member-art-heading h2{margin:0;font-size:1.35rem}
+.member-scenes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.member-scene{position:relative;display:block;width:100%;min-width:0;padding:0;overflow:hidden;isolation:isolate;border:2px solid #77717a;border-radius:22px;background:#fff8ef;box-shadow:3px 4px 0 #65596a26;cursor:pointer;text-align:left;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.member-scene>svg{display:block;width:100%;height:auto;aspect-ratio:500/360;pointer-events:none}
+.member-scene:focus-visible{outline:3px solid #7399ae;outline-offset:5px}
+.member-scene:hover{background:#fff8ef}
+.member-scene:active{transform:none}
+.member-scene svg g,.member-scene svg path{transform-box:view-box}
+.member-scene [class]{animation-play-state:var(--member-play,running)!important}
+.member-scene.scene-paused{--member-play:paused}
+.mc-musician{transform-origin:0px 108px;animation:mc-musician 4s ease-in-out infinite}
+.mc-yong-head{transform-origin:0px -38px;animation:mc-head 4s ease-in-out infinite}
+.mc-pick-arm{transform-origin:-28px -20px;animation:mc-strum 2s ease-in-out infinite}
+.mc-guitar{transform-origin:0px 25px;animation:mc-guitar 4s ease-in-out infinite}
+.mc-blink-yong{transform-origin:0px -71px;animation:member-blink 7.6s ease-in-out infinite}
+.mc-chia{transform-origin:0px 98px;animation:mc-chia 4s ease-in-out infinite}
+.mc-chia-head{transform-origin:0px -49px;animation:mc-chia-head 4s ease-in-out infinite}
+.mc-chia-hair{transform-origin:0px -116px;animation:mc-hair 4s ease-in-out infinite}
+.mc-cheer-arm{transform-origin:-29px -23px;animation:mc-cheer 4s ease-in-out infinite}
+.mc-bag{transform-origin:25px 20px;animation:mc-bag 4s ease-in-out infinite}
+.mc-blink-chia{transform-origin:0px -90px;animation:member-blink 6.8s 1s ease-in-out infinite}
+.mc-spotlight{transform-origin:87px 49px;animation:mc-beam 8s ease-in-out infinite}
+.mc-spotlight-two{transform-origin:209px 47px;animation-delay:-4s}
+.mc-lights{animation:mc-light 5s ease-in-out infinite}
+.mc-music-note{animation:mc-note 8s ease-in-out infinite}
+.mc-fan-heart{animation:mc-heart 8s -3s ease-in-out infinite}
+.mc-sparkles{animation:mc-light 6s -2s ease-in-out infinite}
+.scene-reaction{opacity:0;transition:opacity .5s ease;pointer-events:none}
+.member-scene:is(:hover,:focus-visible,.is-delighted) .scene-reaction{opacity:1}
+.member-scene:is(:hover,:focus-visible,.is-delighted) .mc-extra-love{animation:mc-extra-love 2.6s ease-in-out infinite}
+.member-scene:is(:hover,:focus-visible,.is-delighted) .mc-cheer-arm{animation-name:mc-cheer-happy}
+.mt-tsae{transform-origin:0px 100px;animation:mt-breathe 10s ease-in-out infinite}
+.mt-head{transform-origin:0px -48px;animation:mt-look 10s ease-in-out infinite}
+.mt-hair-back{transform-origin:0px -120px;animation:mt-hair 10s ease-in-out infinite}
+.mt-camera-arm{transform-origin:-28px -24px;animation:mt-camera 10s ease-in-out infinite}
+.mt-camera-star{opacity:0;animation:mt-photo 10s ease-in-out infinite}
+.mt-detective-arm{transform-origin:27px -25px;animation:mt-investigate 10s ease-in-out infinite}
+.mt-eyes{animation:mt-eye-open 10s ease-in-out infinite}
+.mt-happy-eyes{opacity:0;animation:mt-eye-smile 10s ease-in-out infinite}
+.mt-suitcase{transform-origin:0px 40px;animation:mt-case 10s ease-in-out infinite}
+.mt-cloud-far{animation:mt-cloud 24s ease-in-out infinite}
+.mt-cloud-near{animation:mt-cloud-near 18s ease-in-out infinite}
+.mt-mountains{animation:mt-landscape 24s ease-in-out infinite}
+.mt-ripples{animation:mt-water 10s ease-in-out infinite}
+.mt-lupin{transform-origin:0px 0px;animation:mt-flower 7s ease-in-out infinite}
+.mt-lupin-late{animation-delay:-3s}
+.mt-clue{animation:mt-map 10s ease-in-out infinite}
+.mt-question{opacity:0;animation:mt-question 10s ease-in-out infinite}
+.mt-found-star{opacity:0;animation:mt-found 10s ease-in-out infinite}
+.member-scene:is(:hover,:focus-visible,.is-delighted) .mt-extra-stars{animation:mt-extra-stars 2.6s ease-in-out infinite}
+@keyframes mc-musician{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+@keyframes mc-head{0%,100%{transform:rotate(-2deg)}25%{transform:rotate(1deg) translateY(1px)}50%{transform:rotate(2deg)}75%{transform:rotate(-1deg) translateY(1px)}}
+@keyframes mc-strum{0%,100%{transform:rotate(-4deg)}30%{transform:rotate(7deg)}55%{transform:rotate(-3deg)}78%{transform:rotate(6deg)}}
+@keyframes mc-guitar{0%,100%{transform:rotate(-.8deg)}50%{transform:rotate(.8deg)}}
+@keyframes mc-chia{0%,100%{transform:rotate(1.1deg)}50%{transform:rotate(-1.1deg)}}
+@keyframes mc-chia-head{0%,100%{transform:rotate(1deg)}50%{transform:rotate(-1.5deg)}}
+@keyframes mc-hair{0%,100%{transform:rotate(.7deg)}50%{transform:rotate(-.7deg)}}
+@keyframes mc-cheer{0%,100%{transform:rotate(0)}25%{transform:rotate(-9deg)}50%{transform:rotate(4deg)}75%{transform:rotate(-6deg)}}
+@keyframes mc-cheer-happy{0%,100%{transform:rotate(0)}25%{transform:rotate(-16deg)}50%{transform:rotate(8deg)}75%{transform:rotate(-12deg)}}
+@keyframes mc-bag{0%,100%{transform:rotate(3deg)}50%{transform:rotate(-3deg)}}
+@keyframes member-blink{0%,43%,47%,100%{transform:scaleY(1)}45%{transform:scaleY(.12)}}
+@keyframes mc-beam{0%,100%{transform:rotate(-4deg);opacity:.65}50%{transform:rotate(4deg);opacity:.9}}
+@keyframes mc-light{0%,100%{opacity:.45}50%{opacity:1}}
+@keyframes mc-note{0%,12%{opacity:0;transform:translate(0,8px)}26%{opacity:.8}65%{opacity:.8}83%,100%{opacity:0;transform:translate(70px,-25px)}}
+@keyframes mc-heart{0%,15%{opacity:0;transform:translateY(8px)}35%,65%{opacity:.85}88%,100%{opacity:0;transform:translateY(-14px)}}
+@keyframes mc-extra-love{0%,100%{transform:translateY(1px) rotate(0)}50%{transform:translateY(-5px) rotate(1deg)}}
+@keyframes mt-breathe{0%,100%{transform:rotate(-.6deg)}28%{transform:rotate(.5deg)}65%{transform:rotate(-.8deg)}82%{transform:rotate(.8deg)}}
+@keyframes mt-look{0%,100%{transform:rotate(-1deg)}20%,33%{transform:rotate(1deg)}55%,69%{transform:rotate(3deg)}79%,90%{transform:rotate(-2deg)}}
+@keyframes mt-hair{0%,100%{transform:rotate(.3deg)}50%{transform:rotate(-.7deg)}80%{transform:rotate(.8deg)}}
+@keyframes mt-camera{0%,9%,39%,100%{transform:rotate(0)}18%,30%{transform:rotate(-22deg)}34%{transform:rotate(-18deg)}}
+@keyframes mt-photo{0%,22%,34%,100%{opacity:0}27%,29%{opacity:1}}
+@keyframes mt-investigate{0%,40%,90%,100%{transform:rotate(0)}52%,71%{transform:rotate(-25deg)}79%{transform:rotate(-12deg)}}
+@keyframes mt-eye-open{0%,71%,91%,100%{opacity:1}75%,87%{opacity:0}}
+@keyframes mt-eye-smile{0%,71%,91%,100%{opacity:0}75%,87%{opacity:1}}
+@keyframes mt-case{0%,63%,100%{transform:rotate(0)}74%{transform:rotate(-4deg)}83%{transform:rotate(2deg)}91%{transform:rotate(0)}}
+@keyframes mt-cloud{0%,100%{transform:translateX(-5px)}50%{transform:translateX(6px)}}
+@keyframes mt-cloud-near{0%,100%{transform:translateX(6px)}50%{transform:translateX(-8px)}}
+@keyframes mt-landscape{0%,100%{transform:translateX(-1.5px)}50%{transform:translateX(1.5px)}}
+@keyframes mt-water{0%,100%{transform:translateX(-3px);opacity:.7}50%{transform:translateX(3px);opacity:1}}
+@keyframes mt-flower{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(3deg)}}
+@keyframes mt-map{0%,45%,100%{opacity:.6}57%,85%{opacity:1}}
+@keyframes mt-question{0%,45%,73%,100%{opacity:0}54%,65%{opacity:.9}}
+@keyframes mt-found{0%,70%,93%,100%{opacity:0}77%,86%{opacity:1}}
+@keyframes mt-extra-stars{0%,100%{transform:translateY(1px)}50%{transform:translateY(-5px)}}
+@media(max-width:650px){.member-art-section{padding:15px!important}.member-art-heading{margin-bottom:13px}.member-art-heading h2{font-size:1.22rem}.member-scenes{grid-template-columns:minmax(0,1fr);gap:16px}.member-scene{border-radius:20px}}
+@media(prefers-reduced-motion:reduce){.member-scene [class]{animation:none!important;transition:none!important}.member-scene .mc-music-note,.member-scene .mc-fan-heart{opacity:.7}.member-scene .scene-reaction{transition:none}.member-scene .mt-happy-eyes,.member-scene .mt-found-star,.member-scene .mt-question,.member-scene .mt-camera-star{opacity:0}}
+@media print{.member-scene [class]{animation:none!important}.member-art-section{break-inside:avoid}.member-scene{box-shadow:none}}
+
 </style>
 <!-- Firebase（多裝置即時同步用） -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js">
@@ -169,10 +260,184 @@
   </div>
   <main>
     <section id="overview" class="panel active-panel">
-      <div class="card blue"><div class="member-card-head"><h2>旅行成員</h2><button type="button" id="addMember" class="small primary">＋新增成員</button></div><div class="dash"></div>
-        <div id="memberEditorList" class="member-edit-list"></div>
-        <div class="overview-edit-note">成員名稱會同步到目前身分、記帳、分帳、行李與購物清單。成員至少保留一位。</div>
-        <p><button id="saveMembers" class="small primary">儲存旅行成員</button></p>
+      <div class="card member-art-section" id="travelMembers">
+        <div class="member-art-heading"><h2>旅行成員</h2></div>
+        <div class="member-scenes">
+          <button type="button" class="member-scene scene-chia" aria-label="Chia 與鄭容和的迷你演唱會，點一下為他應援">
+            <svg viewBox="0 0 500 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="mc-sky" x2="0" y2="1"><stop stop-color="#f8f3fc"/><stop offset="1" stop-color="#fff4e6"/></linearGradient>
+                <linearGradient id="mc-stage" x2="0" y2="1"><stop stop-color="#7b829e"/><stop offset="1" stop-color="#adb0c7"/></linearGradient>
+                <linearGradient id="mc-hair" x2="1" y2=".8"><stop stop-color="#262a38"/><stop offset=".55" stop-color="#414250"/><stop offset="1" stop-color="#252735"/></linearGradient>
+                <linearGradient id="mc-coat" x2="1" y2="1"><stop stop-color="#fffdf4"/><stop offset="1" stop-color="#e9ddc9"/></linearGradient>
+                <linearGradient id="mc-bag" x2="0" y2="1"><stop stop-color="#d5b698"/><stop offset="1" stop-color="#af896e"/></linearGradient>
+                <radialGradient id="mc-cheek"><stop stop-color="#eb9b94" stop-opacity=".64"/><stop offset="1" stop-color="#eb9b94" stop-opacity="0"/></radialGradient>
+                <linearGradient id="mc-beam" x2="0" y2="1"><stop stop-color="#fff8d7" stop-opacity=".65"/><stop offset="1" stop-color="#fff8d7" stop-opacity="0"/></linearGradient>
+              </defs>
+              <rect width="500" height="360" fill="url(#mc-sky)"/>
+              <circle cx="440" cy="65" r="92" fill="#f8e4dc" opacity=".52"/>
+              <path d="M0 302Q139 271 265 304T500 302V360H0Z" fill="#eadfdc"/>
+              <path d="M0 322Q166 294 320 330T500 319" fill="none" stroke="#fffaf3" stroke-width="2"/>
+              <g stroke="#696b87" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M35 267V112Q35 37 112 37H171Q247 37 247 112V267Z" fill="url(#mc-stage)"/>
+                <path d="M47 261V113Q47 50 111 50H173Q235 50 235 113V261" fill="none" stroke="#dedcef" opacity=".68"/>
+                <path d="M36 78Q75 110 76 164L65 267H35Z" fill="#9b93b3"/><path d="M246 78Q208 114 212 163L223 267H247Z" fill="#9b93b3"/>
+                <path d="M46 89Q66 146 51 243M236 91Q220 149 235 244" fill="none" stroke="#bfb4ce"/>
+                <path class="mc-spotlight" d="M87 49 45 264H206Z" fill="url(#mc-beam)" stroke="none"/>
+                <path class="mc-spotlight mc-spotlight-two" d="M209 47 98 264H247Z" fill="url(#mc-beam)" stroke="none"/>
+                <path d="M30 268Q142 243 254 268V286Q143 308 30 286Z" fill="#b4a9bc"/>
+                <ellipse cx="142" cy="268" rx="112" ry="17" fill="#e4d9dc"/>
+                <path d="M40 287Q142 306 245 287" fill="none" stroke="#f5eced"/>
+                <path d="M56 41Q146 22 231 43" fill="none"/>
+                <g fill="#fff0bf" stroke="#d9c58c"><circle cx="61" cy="40" r="4"/><circle cx="94" cy="34" r="4"/><circle cx="130" cy="31" r="4"/><circle cx="166" cy="32" r="4"/><circle cx="201" cy="36" r="4"/><circle cx="230" cy="43" r="4"/></g>
+                <g fill="#f9edc8" stroke="none" class="mc-lights"><circle cx="61" cy="40" r="7" opacity=".3"/><circle cx="130" cy="31" r="7" opacity=".35"/><circle cx="201" cy="36" r="7" opacity=".3"/></g>
+                <path d="m102 76 2 5 5 2-5 2-2 5-2-5-5-2 5-2ZM198 98l1.6 4 4 1.6-4 1.6-1.6 4-1.6-4-4-1.6 4-1.6Z" fill="#ece6f6" stroke="none"/>
+                <g transform="translate(47 233)"><rect width="25" height="34" rx="4" fill="#676d83"/><circle cx="12.5" cy="12" r="6" fill="#a6a6bb"/><circle cx="12.5" cy="26" r="3" fill="#bcb8cb"/></g>
+              </g>
+              <text x="143" y="291" text-anchor="middle" font-family="Georgia,serif" font-size="8" letter-spacing="2" fill="#746779">YONG HWA</text>
+              <!-- Yong-hwa: legs, torso, head, guitar, fretting hand and picking arm are separate. -->
+              <g transform="translate(147 173) scale(.88)">
+                <ellipse cx="1" cy="109" rx="40" ry="7" fill="#77738b" opacity=".23"/>
+                <g class="mc-musician" stroke="#494350" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m-25 42 4 59 15 1 7-44 9 44 16-2 2-59Z" fill="#434858"/><path d="m-21 99-6 8q-3 5 7 5H-4l1-12m13 0 2 12h21q6-3-3-9l-5-5" fill="#292e3a"/>
+                  <path d="M-29-26Q-43-9-37 33L-29 53Q0 61 31 49L32-25 14-37H-13Z" fill="#414654"/>
+                  <path d="m-13-36 11 43 16-43Z" fill="#f3eee4"/><path d="m-16-34-11 15 15 11-4 10L-2 27m18-61 10 15-14 11 6 11L-2 27" fill="#626477"/>
+                  <path d="M-4-38v10q6 8 14 0v-11" fill="#f3cdb6"/>
+                  <path d="M-8-21Q0-9 10-21" fill="none" stroke="#cfb893"/><circle cx="1" cy="-11" r="2" fill="#dbccb1" stroke="none"/>
+                  <g class="mc-yong-head">
+                    <path d="M-34-75Q-46-101-22-119Q5-138 32-116Q48-95 35-65Z" fill="url(#mc-hair)"/>
+                    <ellipse cx="-32" cy="-69" rx="6" ry="9" fill="#edc3ab"/><ellipse cx="32" cy="-69" rx="6" ry="9" fill="#edc3ab"/>
+                    <path d="M-32-92Q-7-111 29-93L32-70Q26-43 1-37Q-23-40-32-68Z" fill="#f7d8c2"/>
+                    <path d="M-34-77Q-44-96-27-115Q-5-134 18-120Q40-117 37-91L30-68 25-93Q6-92-7-108Q-13-91-31-83Z" fill="url(#mc-hair)"/>
+                    <path d="M-25-106Q-13-120 7-118M15-114q13 6 15 21M-29-98q13-9 20-13" fill="none" stroke="#696875" stroke-width="2" opacity=".55"/>
+                    <path d="m-23-80 14-2m18 0 13 3" fill="none" stroke="#50434a" stroke-width="2.5"/>
+                    <g class="mc-blink-yong"><path d="M-23-72q7-5 14 0M8-72q7-5 14 1" fill="none" stroke="#453d44" stroke-width="2.6"/><ellipse cx="-16" cy="-70" rx="2.3" ry="3.4" fill="#403b44"/><ellipse cx="15" cy="-70" rx="2.3" ry="3.4" fill="#403b44"/></g>
+                    <path d="m1-72-2 10 4 1" fill="none" stroke="#c48d7a" stroke-width="1.4"/><path d="M-9-52q10 7 19-1" fill="none" stroke="#a46b6a" stroke-width="1.8"/>
+                    <ellipse cx="-22" cy="-59" rx="8" ry="5" fill="url(#mc-cheek)" stroke="none"/><ellipse cx="22" cy="-59" rx="8" ry="5" fill="url(#mc-cheek)" stroke="none"/>
+                  </g>
+                  <path d="M-20-23 30 51" fill="none" stroke="#bfa082" stroke-width="6"/>
+                  <g class="mc-guitar">
+                    <path d="M-3 4Q-24-7-31 12Q-35 28-18 38Q-25 56-3 61Q17 63 27 46Q29 33 15 24Q22 11 11 4Z" fill="#bedacb"/>
+                    <path d="M-4 12Q-20 3-23 17Q-26 29-11 34Q-18 48-4 52Q12 56 19 42Q20 34 7 26Q14 14 6 12Z" fill="#e1eddd" stroke="#91b7a5"/>
+                    <path d="m6 23 57-37 5 7-55 39Z" fill="#b48f74"/><path d="m61-14 11-14 11 9-15 14Z" fill="#c9b396"/>
+                    <path d="m70-26 1-5m6 9 3-5m-13 4-5-1m9 8-4 2" fill="none" stroke="#d9d0c0" stroke-width="3"/>
+                    <path d="m-9 36 75-47m-72 51 75-47" fill="none" stroke="#eee7d9" stroke-width=".85"/>
+                    <path d="m-15 40 7 9m3-17 8 10" stroke="#605b62" stroke-width="4"/><circle cx="12" cy="46" r="2" fill="#d0ac77" stroke="none"/>
+                  </g>
+                  <path d="M25-13Q45-6 45 1L33 9 19-1" fill="#484b5a"/><path d="m35 1 10-7q5-4 8 1l-5 8-7 5Z" fill="#f6d2bb"/>
+                  <g class="mc-pick-arm"><path d="M-29-20Q-45-12-34 8L-17 28-5 15-21-4" fill="#555b6c"/><path d="m-16 25 10 9q9 2 13-4L1 22l-8-7Z" fill="#f5d2ba"/><path d="m-1 26 5 3" stroke="#cc9d89"/></g>
+                </g>
+              </g>
+              <g transform="translate(216 206)" stroke="#57586e" stroke-width="2" stroke-linecap="round"><path d="M0 74V-19l-15-6M-11 74h22" fill="none"/><rect x="-29" y="-31" width="23" height="9" rx="4.5" fill="#62667d" transform="rotate(12 -18 -26)"/></g>
+              <!-- Chia: side-parted shoulder-length hair, cream jacket, milk-tea bag. -->
+              <ellipse cx="342" cy="322" rx="61" ry="9" fill="#a49299" opacity=".17"/>
+              <g transform="translate(333 218)">
+                <g class="mc-chia" stroke="#63545a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m-30 43 8 54 18 2 5-38 10 36 19-4-3-50Z" fill="#73758a"/><path d="m-22 94-3 10q0 6 18 4l5-3-2-10m15-1 2 13q21 6 25-2l-12-12" fill="#fbf3df"/>
+                  <g class="mc-chia-hair"><path d="M-48-77Q-57-119-36-141Q-13-160 15-148Q49-145 50-110L49-38Q37-18 6-20L-37-25Q-56-39-48-77Z" fill="url(#mc-hair)"/><path d="M-40-104q-7 36 3 64m77-63q6 40-7 65" fill="none" stroke="#5a5662" stroke-width="3"/></g>
+                  <path d="M-17-39 18-39 34-25 41 27 31 52Q4 60-30 50L-40 17-34-24Z" fill="url(#mc-coat)"/>
+                  <path d="m-8-40-16 9 8 23 16-18 12 17 13-22-12-9" fill="#fffdf5" stroke="#d7c9b9"/>
+                  <path d="M0-25v67" fill="none" stroke="#cbbcaa"/><circle cx="4" cy="0" r="2" fill="#b6a68f" stroke="none"/><circle cx="4" cy="19" r="2" fill="#b6a68f" stroke="none"/>
+                  <path d="M-34 30q4 6 8 1 5 8 9 2m31 2q5 6 8 0 5 5 8-1" fill="none" stroke="#d6c9b8"/>
+                  <path d="M-8-54v17q8 9 18 0v-17" fill="#f1c5ac"/>
+                  <g class="mc-chia-head">
+                    <ellipse cx="-40" cy="-93" rx="6" ry="10" fill="#efc5ac"/><ellipse cx="39" cy="-94" rx="6" ry="10" fill="#efc5ac"/>
+                    <path d="M-40-111Q-29-140 9-132Q40-128 40-103L36-77Q25-51 0-49Q-27-52-38-78Z" fill="#f8d9c3"/>
+                    <path d="M-45-94Q-48-140-10-146Q28-153 46-125L43-86Q34-101 20-132Q-1-132-19-113Q-35-99-45-94Z" fill="url(#mc-hair)"/>
+                    <path d="M17-138q-28 0-47 30M25-134q6 18 14 30" fill="none" stroke="#777078" stroke-width="2.2" opacity=".5"/>
+                    <path d="M-26-99q8-5 17-2m20-1q8-3 16 3" fill="none" stroke="#6d5557" stroke-width="2"/>
+                    <g class="mc-blink-chia"><path d="M-26-91q8-5 16 0M12-91q8-5 15 1" fill="none" stroke="#554149" stroke-width="2.1"/><ellipse cx="-17" cy="-89" rx="3.1" ry="4" fill="#433d48"/><ellipse cx="19" cy="-89" rx="3.1" ry="4" fill="#433d48"/><circle cx="-18" cy="-90.5" r="1" fill="#fff" stroke="none"/><circle cx="18" cy="-90.5" r="1" fill="#fff" stroke="none"/></g>
+                    <path d="m2-88-2 8 4 2" fill="none" stroke="#d5a18d" stroke-width="1.3"/>
+                    <ellipse cx="-27" cy="-77" rx="12" ry="7" fill="url(#mc-cheek)" stroke="none"/><ellipse cx="27" cy="-77" rx="12" ry="7" fill="url(#mc-cheek)" stroke="none"/>
+                    <path d="M-12-68Q0-61 14-69Q11-55 1-55Q-8-56-12-68Z" fill="#a66165" stroke="#a46d70" stroke-width="1"/><path d="M-9-66q10 5 20-1l-2 5q-9 4-16 0Z" fill="#fff9ee" stroke="none"/>
+                    <circle cx="28" cy="-77" r=".9" fill="#a9776b" stroke="none"/>
+                  </g>
+                  <path d="M28-29Q38-12 40 9L28 15 15-17" fill="url(#mc-coat)"/><path d="m28 12 2 12q5 8 11 0l-2-15" fill="#f6d2b9"/>
+                  <path d="M-23-30Q3-8 25 32" fill="none" stroke="#a8866c" stroke-width="3.5"/>
+                  <g class="mc-bag"><path d="M13 20q13-10 28-1l7 29q-2 10-27 9L9 49Z" fill="url(#mc-bag)"/><path d="m13 23 4 17q14 7 27-2" fill="none" stroke="#ead1b7"/><path d="M14 22q11 18 29 1" fill="none" stroke="#e6ccaa" stroke-width="2.2" stroke-dasharray="2 3"/><rect x="27" y="35" width="9" height="7" rx="2" fill="#e9ce9a" stroke="#a58163"/><path d="m16 44 4 7m23-7-1 6" stroke="#a5836d"/></g>
+                  <g class="mc-cheer-arm"><path d="M-29-30Q-42-34-49-16L-61-37-74-29Q-63 7-45 9Q-31 7-25-13" fill="url(#mc-coat)"/><path d="m-61-35-3-11q-2-5-6-4l-6 8 1 13Z" fill="#f7d5bf"/><g transform="rotate(-14 -70 -49)"><rect x="-74" y="-74" width="9" height="34" rx="4" fill="#f6efe2"/><rect x="-77" y="-107" width="15" height="36" rx="7" fill="#cee9ed" stroke="#7eabb9"/><path d="M-70-100v20" stroke="#f9fffa" stroke-width="3"/><path d="m-72-111 2-5 3 5" fill="#ffdf9d" stroke="#ccab77"/></g></g>
+                </g>
+              </g>
+              <g fill="#b19ebd" stroke="#8c7f9e" stroke-width="1.2" class="mc-music-note"><path d="M210 154v-19l15-3v18m-15-10 15-3" fill="none" stroke-width="2.5"/><ellipse cx="205" cy="155" rx="5" ry="3" transform="rotate(-20 205 155)"/><ellipse cx="220" cy="151" rx="5" ry="3" transform="rotate(-20 220 151)"/></g>
+              <g class="mc-fan-heart" fill="#ddaaac" stroke="#c88e9a" stroke-width="1.2"><path d="M409 167c-15-9-11-20-4-18q5 0 5 5 4-8 10-3 7 7-11 16Z"/></g>
+              <g class="mc-sparkles" fill="#e1bc75" stroke="#caac75" stroke-width="1"><path d="m270 62 3 8 8 3-8 3-3 8-3-8-8-3 8-3ZM448 225l2 6 6 2-6 2-2 6-2-6-6-2 6-2Z"/><circle cx="420" cy="115" r="2.5"/><circle cx="285" cy="285" r="2"/></g>
+              <g class="scene-reaction mc-extra-love" fill="#ce91a6"><path d="M400 113c-21-14-12-26-4-22q5 2 5 7 6-13 14-6 10 10-15 21Z"/><path d="M429 145c-14-8-9-19-3-16q4 1 4 5 4-8 10-4 6 7-11 15Z"/></g>
+              <path d="M410 315q15 6 35-3m-33 9q11 4 23-1" fill="none" stroke="#c4aaa1" stroke-width="1.5" stroke-linecap="round"/>
+            <text x="27" y="339" font-family="Georgia,serif" font-size="29" font-style="italic" font-weight="400" fill="#6c5a66">Chia</text><path d="M30 348q22-5 48-3" fill="none" stroke="#c8a8ae" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button type="button" class="member-scene scene-tsae" aria-label="Tsae 的紐西蘭旅行冒險，點一下尋找旅行線索">
+            <svg viewBox="0 0 500 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="mt-sky" x2="0" y2="1"><stop stop-color="#e7f3f3"/><stop offset="1" stop-color="#faf5e9"/></linearGradient>
+                <linearGradient id="mt-lake" x2="0" y2="1"><stop stop-color="#b4dedf"/><stop offset="1" stop-color="#dceddc"/></linearGradient>
+                <linearGradient id="mt-hair" x2="1" y2="1"><stop stop-color="#34303b"/><stop offset=".55" stop-color="#51454c"/><stop offset="1" stop-color="#302e39"/></linearGradient>
+                <linearGradient id="mt-jacket" x2="1" y2="1"><stop stop-color="#d5e4e8"/><stop offset="1" stop-color="#91b9c9"/></linearGradient>
+                <radialGradient id="mt-cheek"><stop stop-color="#e9a19a" stop-opacity=".6"/><stop offset="1" stop-color="#e9a19a" stop-opacity="0"/></radialGradient>
+              </defs>
+              <rect width="500" height="360" fill="url(#mt-sky)"/>
+              <circle cx="399" cy="65" r="29" fill="#f5dfaa"/><circle cx="399" cy="65" r="39" fill="#f6e6c1" opacity=".35"/>
+              <g class="mt-cloud-far" fill="#fffdf5"><path d="M55 77q-2-12 12-14 6-16 22-7 14-4 19 13 15-2 18 8Z"/><path d="M332 110q0-10 10-10 6-16 20-9 13-2 17 10 14-2 19 9Z"/></g>
+              <g class="mt-cloud-near" fill="#fffdf7" stroke="#d4e3df" stroke-width="1"><path d="M176 43q-1-10 11-12 6-12 17-6 13-2 16 11 12-2 16 7Z"/></g>
+              <g class="mt-mountains" stroke="#92aeb9" stroke-width="1.3" stroke-linejoin="round">
+                <path d="M-20 206 59 133 103 163 174 66 276 204Z" fill="#b5cdd4"/><path d="m122 138 52-72 42 57-24-9-13 16-17-28-13 25-13-3Z" fill="#fffdf3" stroke="none"/>
+                <path d="m174 67-4 89 18 50M56 136l18 69" fill="none" opacity=".45"/>
+                <path d="m207 205 107-98 57 60 42-40 96 78Z" fill="#c3d6d4"/><path d="m284 135 30-28 34 36-26-9-8 12-13-18Z" fill="#fffdf3" stroke="none"/>
+                <path d="M-10 203Q79 170 151 192T305 198 508 190V283H-10Z" fill="url(#mt-lake)" stroke="none"/>
+              </g>
+              <g fill="none" stroke="#edf9ef" stroke-width="2" stroke-linecap="round" class="mt-ripples"><path d="M37 218h77m-50 12h30m270-16h63m-76 17h82M157 245h31m208-2h51"/></g>
+              <path d="M0 273Q79 252 159 277T307 282 500 255V360H0Z" fill="#e8e2c8"/><path d="M0 319Q155 277 329 312T500 311V360H0Z" fill="#f6edda"/>
+              <path d="M318 280q32-10 68-3m-27-14 21-1M68 288l31-4" fill="none" stroke="#c7ccb0" stroke-width="2" stroke-linecap="round"/>
+              <!-- Lupins: leaves and flower heads are drawn as one swaying stem group. -->
+              <g transform="translate(47 314)" class="mt-lupin-position"><g class="mt-lupin" stroke="#829b88" stroke-width="1.5" stroke-linecap="round"><path d="M0 0 4-63m-3 42-15-16m15 10 15-18" fill="none"/><path d="M0-13q-24-4-21-15 14 1 21 15m1-4q12-19 20-15-1 12-20 15" fill="#a9bea0"/><g fill="#b8a5cb" stroke="#9a8db3" stroke-width="1"><ellipse cx="4" cy="-67" rx="3" ry="6"/><ellipse cx="0" cy="-59" rx="5" ry="4"/><ellipse cx="7" cy="-57" rx="5" ry="4"/><ellipse cx="-1" cy="-50" rx="6" ry="4"/><ellipse cx="9" cy="-47" rx="6" ry="4"/><ellipse cx="-2" cy="-40" rx="6" ry="4"/><ellipse cx="9" cy="-37" rx="6" ry="4"/></g></g></g>
+              <g transform="translate(79 319) scale(.72)" class="mt-lupin-position"><g class="mt-lupin mt-lupin-late" stroke="#829b88" stroke-width="1.5"><path d="M0 0 4-74m-3 56-15-12m15 6 15-19" fill="none"/><path d="M0-14q-21-7-20-17 15 3 20 17m1-1q15-19 24-13-6 11-24 13" fill="#a9bea0"/><g fill="#dbb0c3" stroke="#bb93af" stroke-width="1"><ellipse cx="4" cy="-73" rx="3" ry="6"/><ellipse cx="0" cy="-65" rx="5" ry="4"/><ellipse cx="7" cy="-61" rx="5" ry="4"/><ellipse cx="-1" cy="-54" rx="6" ry="4"/><ellipse cx="9" cy="-50" rx="6" ry="4"/><ellipse cx="-2" cy="-43" rx="6" ry="4"/><ellipse cx="9" cy="-39" rx="6" ry="4"/></g></g></g>
+              <g transform="translate(441 313)"><g class="mt-lupin mt-lupin-late" stroke="#829b88" stroke-width="1.5"><path d="M0 0-3-54m1 38 17-16" fill="none"/><path d="M0-14q-25-1-22-12 14-1 22 12m0-2q17-14 24-8-7 9-24 8" fill="#a9bea0"/><g fill="#b6a6ca" stroke="#9a8eb0" stroke-width="1"><ellipse cx="-3" cy="-61" rx="3" ry="6"/><ellipse cx="-6" cy="-53" rx="5" ry="4"/><ellipse cx="1" cy="-49" rx="5" ry="4"/><ellipse cx="-7" cy="-43" rx="6" ry="4"/><ellipse cx="2" cy="-39" rx="6" ry="4"/><ellipse cx="-7" cy="-33" rx="6" ry="4"/></g></g></g>
+              <path d="M383 248q31-19 30-53t-27-37" fill="none" stroke="#abaaa0" stroke-width="1.5" stroke-dasharray="3 6" stroke-linecap="round"/>
+              <g class="mt-clue" transform="translate(380 151)" stroke="#998977" stroke-width="1.6" stroke-linejoin="round"><path d="m-21-12 14-5 13 5 15-5v35l-15 5-13-5-14 5Z" fill="#fff5d9"/><path d="M-7-16v34M6-12v35" fill="none" stroke="#dfccaa"/><path d="m-15 9 6-8 12 8 9-12" fill="none" stroke="#cfa07d" stroke-dasharray="2 3"/><path d="m10-6 6 6m0-6-6 6" fill="none" stroke="#b76e72"/></g>
+              <!-- Tsae: long hair with wispy fringe, broad smile and travel clothes. -->
+              <ellipse cx="261" cy="324" rx="59" ry="8" fill="#b4b49a" opacity=".26"/>
+              <g transform="translate(264 219)">
+                <g class="mt-tsae" stroke="#625057" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <g class="mt-hair-back"><path d="M-47-77Q-55-124-30-142Q-6-159 23-144Q49-133 46-89L52-21Q55 3 34 8L-32 1Q-54-5-47-39Z" fill="url(#mt-hair)"/><path d="M-40-82q-8 43 7 66m72-70q-5 40 4 62m-5-15q-3 23-13 27" fill="none" stroke="#73616a" stroke-width="2.2" opacity=".6"/></g>
+                  <path d="m-22 54 3 43 13 1 7-41m11-1 2 40 14-1 1-46" fill="#f1ceb7"/><path d="m-19 95-8 9q-2 9 23 6l2-14m15-1 1 13q15 7 25 0l-11-12" fill="#fffaf0"/><path d="m-24 107 19 1m23-1 16 1" fill="none" stroke="#c5c4bc"/>
+                  <path d="M-24 24 25 23 37 69Q4 81-35 67Z" fill="#d0bba0"/><path d="m-15 38-5 28M0 41v31m15-31 8 28" fill="none" stroke="#bba48b"/>
+                  <path d="M-29-29Q-37-22-39 8L-29 39Q0 46 31 38L36-9 25-31 11-37H-12Z" fill="url(#mt-jacket)"/>
+                  <path d="m-9-36 10 32 11-32Z" fill="#fff9eb"/><path d="m-11-35-13 7 12 18 13-10 12 10 12-20-12-6" fill="#deebea"/><path d="M1-4v39M-27 11l13 2m27-1 13-2" fill="none" stroke="#7f9fab"/><circle cx="5" cy="10" r="2" fill="#e7e3ce" stroke="none"/><circle cx="5" cy="25" r="2" fill="#e7e3ce" stroke="none"/>
+                  <path d="M-8-54v19q9 9 18 0v-20" fill="#f1c6ac"/>
+                  <g class="mt-head">
+                    <ellipse cx="-40" cy="-91" rx="6" ry="10" fill="#efc5ac"/><ellipse cx="38" cy="-91" rx="6" ry="10" fill="#efc5ac"/>
+                    <path d="M-39-111Q-29-136 8-133Q36-128 39-101L35-76Q26-50 1-49Q-26-50-37-77Z" fill="#f9d9c1"/>
+                    <path d="M-44-97Q-51-134-20-146Q15-157 39-131Q47-113 41-89L30-116Q21-138 0-136Q-24-136-31-113L-38-88Z" fill="url(#mt-hair)"/>
+                    <path d="M-30-120Q-22-139-5-138L-9-107-17-109-15-129-23-109-30-106ZM-4-139Q7-143 13-134L12-107 5-110 3-129 0-107-7-108ZM13-136Q27-130 30-119L32-106 24-107 19-127 19-105 13-108Z" fill="url(#mt-hair)" stroke="none"/>
+                    <path d="M-33-124q6-14 23-17m24 5q10 4 15 16" fill="none" stroke="#786571" stroke-width="2" opacity=".6"/>
+                    <path d="M-25-99q7-4 15-1m21-1q8-3 15 1" fill="none" stroke="#705359" stroke-width="1.8"/>
+                    <g class="mt-eyes"><path d="M-26-89q8-6 16-1m21 0q8-5 16 1" fill="none" stroke="#58424b" stroke-width="2.4"/><ellipse cx="-17" cy="-87" rx="3.2" ry="4.6" fill="#463d48"/><ellipse cx="19" cy="-87" rx="3.2" ry="4.6" fill="#463d48"/><circle cx="-18" cy="-89" r="1.2" fill="#fff" stroke="none"/><circle cx="18" cy="-89" r="1.2" fill="#fff" stroke="none"/></g>
+                    <g class="mt-happy-eyes" fill="none" stroke="#59414a" stroke-width="2.5"><path d="M-25-87q8-10 16 0m20 0q8-10 16 0"/></g>
+                    <path d="m2-86-2 8 4 1" fill="none" stroke="#d09a85" stroke-width="1.3"/><ellipse cx="-27" cy="-76" rx="13" ry="8" fill="url(#mt-cheek)" stroke="none"/><ellipse cx="28" cy="-76" rx="13" ry="8" fill="url(#mt-cheek)" stroke="none"/>
+                    <path d="M-16-69Q0-63 17-69Q14-51 1-51Q-11-52-16-69Z" fill="#a9656a" stroke="#a9686c" stroke-width="1"/><path d="M-13-67q14 4 27 0l-4 7q-9 4-19-1Z" fill="#fffcef" stroke="none"/><path d="M-5-54q5-4 11 0" stroke="#d99293" stroke-width="2"/>
+                  </g>
+                  <path d="M-22-28 16 24" fill="none" stroke="#a28476" stroke-width="3"/>
+                  <path d="m-18-22-6 4 7 4 1-6 7 6v-9l-8 1Z" fill="#b5757b" stroke="#935c68" stroke-width="1"/>
+                  <g class="mt-camera-arm"><path d="M-28-25Q-42-23-42-5L-30 17-16 6-25-8" fill="url(#mt-jacket)"/><path d="m-30 11 14 10 9-12-15-8Z" fill="#f5d3bb"/>
+                    <g transform="translate(-10 12) rotate(-7)"><rect x="-15" y="-12" width="41" height="28" rx="5" fill="#646d79"/><path d="M-7-12v-5H5l4 5" fill="#747e87"/><rect x="15" y="-8" width="7" height="4" rx="1" fill="#ecd5a4" stroke="none"/><circle cx="5" cy="2" r="11" fill="#dae4dc"/><circle cx="5" cy="2" r="7" fill="#7995a3"/><path d="m1-2 4-2" stroke="#f3f9ed" stroke-width="2"/><circle cx="-10" cy="-5" r="1.5" fill="#ddc9a1" stroke="none"/>
+                      <g class="mt-camera-star" transform="translate(23 -17)" fill="#fff9d0" stroke="#d6ba7d" stroke-width="1"><path d="m0-12 3 8 8 4-8 3-3 9-3-9-8-3 8-4Z"/></g>
+                    </g>
+                  </g>
+                  <g class="mt-detective-arm"><path d="M27-27Q42-26 44-9L49 2 61-11 72-1Q55 28 43 23L22-1" fill="url(#mt-jacket)"/><path d="m59-10 1-12q2-7 8-4l6 9-3 14Z" fill="#f6d4bd"/>
+                    <g transform="translate(70 -39) rotate(17)"><rect x="-4" y="10" width="8" height="28" rx="3" fill="#b3957e"/><circle r="20" fill="#e6f8f2" fill-opacity=".65" stroke="#a18c73" stroke-width="4"/><path d="M-12-5q4-9 12-8" stroke="#fffdf4" stroke-width="3" fill="none"/><circle r="15.5" fill="none" stroke="#d4e4dc" stroke-width="1.3"/></g>
+                  </g>
+                </g>
+              </g>
+              <!-- A tiny bow tie and spectacle sticker nod to detective stories, without an official character. -->
+              <g transform="translate(151 286)"><g class="mt-suitcase" stroke="#7f8192" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="1" cy="43" rx="31" ry="5" fill="#bbb7ad" stroke="none" opacity=".35"/><path d="M-10-27v-24q10-7 20 0v24" fill="none" stroke-width="3"/><rect x="-25" y="-28" width="53" height="67" rx="10" fill="#c2bacf"/><rect x="-19" y="-21" width="40" height="52" rx="7" fill="#d9d2e0" stroke="#aea7be"/><path d="M-13-16v42m29-42v42" stroke="#bab0c8"/><circle cx="-15" cy="40" r="4" fill="#6e7684"/><circle cx="18" cy="40" r="4" fill="#6e7684"/><g transform="rotate(-9)"><rect x="-16" y="-12" width="29" height="23" rx="4" fill="#fff8e9" stroke="#b3a9a6"/><circle cx="-7" cy="-3" r="4" fill="none" stroke="#566883" stroke-width="1.5"/><circle cx="4" cy="-3" r="4" fill="none" stroke="#566883" stroke-width="1.5"/><path d="M-3-4h3m-5 9-5-3v7l5-3 5 3V2Z" fill="#c57d82" stroke="#a9727b" stroke-width=".7"/></g><path d="m5 23 5-8 8 4-4 10Z" fill="#e7cb91" stroke="#b7a273"/></g></g>
+              <g class="mt-question" fill="none" stroke="#b4a16e" stroke-width="2.5" stroke-linecap="round"><path d="M367 128q-1-10 7-10 10 0 8 8-1 5-8 7v5"/><circle cx="374" cy="144" r="1.5" fill="#b4a16e" stroke="none"/></g>
+              <g class="mt-found-star" transform="translate(382 141)" fill="#eed395" stroke="#c0a571" stroke-width="1.5"><path d="m0-17 4 12 13 5-13 4-4 13-5-13-12-4 12-5Z"/></g>
+              <g class="scene-reaction mt-extra-stars" fill="#e8c484" stroke="#c4a26c" stroke-width="1"><path d="m351 71 3 9 9 3-9 3-3 9-3-9-9-3 9-3ZM404 182l2 6 6 2-6 2-2 6-2-6-6-2 6-2Z"/><circle cx="373" cy="91" r="2"/><circle cx="415" cy="162" r="2.5"/></g>
+              <g fill="none" stroke="#a8afa0" stroke-width="1.3" stroke-linecap="round"><path d="m396 317 3-8 4 7m-286-13 2-8 4 6"/></g>
+            <text x="27" y="339" font-family="Georgia,serif" font-size="29" font-style="italic" font-weight="400" fill="#526d78">Tsae</text><path d="M30 348q22-5 48-3" fill="none" stroke="#a8beb8" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
       <div class="card yellow">
         <div class="section-title-row"><h2 id="ovKeyTitleDisplay" class="overview-title-display"></h2><button type="button" class="inline-icon-button warning overview-title-edit-button" onclick="openOverviewTitleEditor('key')">✎ 編輯標題</button></div>
@@ -271,7 +536,7 @@
 
 <script>
 (function(){
-  const CURRENT_BUILD='2026-10-10-centered-route-repair-v2';
+  const CURRENT_BUILD='2026-10-10-member-illustrations-v3';
   try{
     const bustUrl=location.pathname+'?_cb='+Date.now()+Math.random().toString(36).slice(2);
     fetch(bustUrl,{cache:'no-store'}).then(r=>r.text()).then(html=>{
@@ -671,10 +936,9 @@ function populateMemberSelect(el,{shared=false,preserve=true}={}){if(!el)return;
 function populateSplitSelect(){const old=split.value;const normalized=old==='chia'?'member:Chia':old==='tsae'?'member:Tsae':old;split.innerHTML=`<option value="equal">全體成員平分</option>`+members().map(m=>`<option value="member:${escapeHtml(m.id)}">${escapeHtml(m.name)} 全額負擔</option>`).join('');split.value=[...split.options].some(o=>o.value===normalized)?normalized:'equal'}
 function renderIdentityButtons(){identityButtons.innerHTML=members().map(m=>`<button type="button" class="identity-btn ${m.id===currentIdentity?'active':''}" data-identity="${escapeHtml(m.id)}">${escapeHtml(m.name)}</button>`).join('');identityButtons.querySelectorAll('[data-identity]').forEach(b=>b.onclick=()=>setIdentity(b.dataset.identity))}
 function renderPersonalSwitch(){personalMemberSwitch.innerHTML=members().map(m=>`<button type="button" class="${m.id===activePerson?'active':''}" data-person="${escapeHtml(m.id)}">${escapeHtml(m.name)}</button>`).join('');personalMemberSwitch.querySelectorAll('[data-person]').forEach(b=>b.onclick=()=>{activePerson=b.dataset.person;populateMemberSelect(personalOwner);personalOwner.value=activePerson;renderPersonal();renderPersonalSwitch()})}
-function renderMemberEditor(){memberEditorList.innerHTML=members().map((m,i)=>`<div class="member-edit-card" data-member-row="${escapeHtml(m.id)}"><div class="member-card-head"><b>成員 ${i+1}</b><button type="button" class="inline-icon-button danger" onclick="removeMember('${escapeHtml(m.id)}')">刪除</button></div><label>名稱</label><input data-member-name value="${escapeHtml(m.name)}" placeholder="成員名稱"><label>備註</label><textarea data-member-note placeholder="可填聯絡方式、分工或其他備註">${escapeHtml(m.note)}</textarea></div>`).join('')}
 function refreshMemberLabels(){
  currentIdentity=safeMemberId(currentIdentity);activePerson=safeMemberId(activePerson||currentIdentity);
- renderIdentityButtons();renderPersonalSwitch();renderMemberEditor();
+ renderIdentityButtons();renderPersonalSwitch();
  ['payer','sharedAddedBy','personalOwner','editAddedBy'].forEach(id=>populateMemberSelect($(id)));
  ['packingOwner','shoppingOwner'].forEach(id=>populateMemberSelect($(id),{shared:true}));populateSplitSelect();
  if($('sharedAddedBy'))sharedAddedBy.value=safeMemberId(sharedAddedBy.value||currentIdentity);if($('editAddedBy'))editAddedBy.value=safeMemberId(editAddedBy.value||currentIdentity);if($('personalOwner'))personalOwner.value=safeMemberId(personalOwner.value||activePerson);
@@ -704,9 +968,6 @@ function renderOverview(){
 })();
 
 function persistOverview(){saveJSON(KEYS.overview,overview);renderOverview()}
-addMember.onclick=()=>{overview.members.push({id:'m-'+uid(),name:'新成員',note:''});renderMemberEditor();const rows=memberEditorList.querySelectorAll('[data-member-row]');rows[rows.length-1]?.querySelector('[data-member-name]')?.select()};
-window.removeMember=id=>{if(members().length<=1){appNotice('至少要保留一位旅行成員');return}appConfirm(`確定移除 ${memberLabel(id)}？既有記帳紀錄仍會保留，但之後不再出現在選單中。`,()=>{overview.members=members().filter(m=>m.id!==id);overview.sectionUpdatedAt.members=Date.now();if(currentIdentity===id)currentIdentity=members()[0]?.id||'';if(activePerson===id)activePerson=currentIdentity;persistOverview();renderExpenses();renderPersonal();renderChecklist('packing');renderChecklist('shopping')},'確定移除')};
-saveMembers.onclick=()=>{overview.members=[...memberEditorList.querySelectorAll('[data-member-row]')].map((row,i)=>({id:row.dataset.memberRow,updatedAt:Date.now(),name:row.querySelector('[data-member-name]').value.trim()||`成員 ${i+1}`,note:row.querySelector('[data-member-note]').value.trim()}));overview.sectionUpdatedAt.members=Date.now();persistOverview();renderExpenses();renderPersonal();renderChecklist('packing');renderChecklist('shopping')};
 function overviewTitleId(section,suffix=''){const cap=section[0].toUpperCase()+section.slice(1);return 'ov'+cap+'Title'+suffix}
 window.openOverviewTitleEditor=section=>{const editor=$(overviewTitleId(section,'Editor')),input=$(overviewTitleId(section));if(!editor||!input)return;editor.classList.remove('hidden');setTimeout(()=>{input.focus();input.select()},0)};
 window.cancelOverviewTitleEdit=section=>{const editor=$(overviewTitleId(section,'Editor')),input=$(overviewTitleId(section));if(input)input.value=overview[section+'Title']||defaultOverview[section+'Title'];if(editor)editor.classList.add('hidden')};
@@ -881,6 +1142,26 @@ initSync();
 window.addEventListener('pageshow',e=>{if(e.persisted)location.reload()});
 
 if(TEST_ROOM){const clear=document.createElement('button');clear.className='small danger';clear.id='clearTestData';clear.textContent='清除本次測試資料';$('exportData').parentElement.appendChild(clear);clear.onclick=()=>appConfirm('確定清除本次隔離測試資料？原本行程與記帳資料不受影響。',async()=>{qaDisposed=true;Object.values(KEYS).forEach(k=>{if(fbDb)fbDb.ref(syncKeyPath(k)).off()});for(let i=localStorage.length-1;i>=0;i--){const k=localStorage.key(i);if(k&&k.startsWith(STORAGE_PREFIX))localStorage.removeItem(k)}try{if(fbDb)await fbDb.ref(SYNC_ROOT).remove();setSyncStatus('本次測試資料已清除');document.querySelector('main').innerHTML='<p>本次隔離測試資料已清除，可關閉此頁面。</p>';document.querySelectorAll('button').forEach(b=>b.disabled=true)}catch(e){setSyncStatus('測試本機資料已清除；雲端清除失敗');console.error('測試清除失敗',e)}},'確定清除測試資料')}
+
+</script>
+<script>
+/* Decorative interactions never write member, itinerary or accounting data. */
+(()=>{
+ const scenes=[...document.querySelectorAll('.member-scene')];
+ const visible=new Map(scenes.map(scene=>[scene,false]));
+ const timers=new Map();
+ const refresh=()=>scenes.forEach(scene=>scene.classList.toggle('scene-paused',document.hidden||!visible.get(scene)));
+ if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>visible.set(entry.target,entry.isIntersecting));refresh()},{threshold:.08});
+  scenes.forEach(scene=>observer.observe(scene));
+ }else{scenes.forEach(scene=>visible.set(scene,true));}
+ document.addEventListener('visibilitychange',refresh);
+ scenes.forEach(scene=>scene.addEventListener('click',()=>{
+  clearTimeout(timers.get(scene));scene.classList.add('is-delighted');
+  timers.set(scene,setTimeout(()=>{scene.classList.remove('is-delighted');timers.delete(scene)},2800));
+ }));
+ refresh();
+})();
 
 </script>
 </body>
