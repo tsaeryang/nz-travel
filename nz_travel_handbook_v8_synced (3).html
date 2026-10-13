@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>紐西蘭南島旅遊手帳</title>
-<!-- build: 2026-10-13-restaurant-bookings-v1 -->
-<!-- BUILD_ID: 2026-10-13-restaurant-bookings-v1 -->
-<meta name="build-id" content="2026-10-13-restaurant-bookings-v1" />
+<!-- build: 2026-10-13-restaurant-bookings-sync-v2 -->
+<!-- BUILD_ID: 2026-10-13-restaurant-bookings-sync-v2 -->
+<meta name="build-id" content="2026-10-13-restaurant-bookings-sync-v2" />
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -536,7 +536,7 @@
 
 <script>
 (function(){
-  const CURRENT_BUILD='2026-10-13-restaurant-bookings-v1';
+  const CURRENT_BUILD='2026-10-13-restaurant-bookings-sync-v2';
   try{
     const bustUrl=location.pathname+'?_cb='+Date.now()+Math.random().toString(36).slice(2);
     fetch(bustUrl,{cache:'no-store'}).then(r=>r.text()).then(html=>{
@@ -732,7 +732,7 @@ function mergeById(localArr,remoteArr){
 function mergeDays(localDays,remoteDays){
   const localById=new Map((localDays||[]).map(d=>[d.id,d]));
   const remoteById=new Map((remoteDays||[]).map(d=>[d.id,d]));
-  const winner=mergeById(localDays,remoteDays);
+  const winner=mergeById(remoteDays,localDays); // Cloud wins equal timestamps; newer local edits still win.
   return upgradeRestaurantDays(winner.map(d=>{
     const l=localById.get(d.id),r=remoteById.get(d.id);
     if(l&&r)return normalizeDay({...d,events:mergeById(l.events||[],r.events||[])});
@@ -865,7 +865,7 @@ function dedupeEvents(events){
   });
   return out;
 }
-function normalizeDay(d){d=retireLegacyEvents(d);const restaurants=upgradeRestaurantMeals(d),hasCurated=Object.values(restaurants).flat().some(r=>r.note===RESTAURANT_RECOMMENDATIONS[restaurantKey(r.name)]?.note),copyChanged=JSON.stringify(restaurants)!==JSON.stringify(d.restaurants||{})||hasCurated&&!d.restaurantCopyRevision;return{...d,...(hasCurated?{restaurantCopyRevision:1}:{}),id:d.id||stableId('day',(d.date||'')+'|'+(d.title||'')),updatedAt:copyChanged?Math.max(RESTAURANT_COPY_TIME,d.updatedAt||1):d.updatedAt||1,place:d.place||inferPlace(d.title),events:sortEvents(dedupeEvents((d.events||[]).map(e=>({...e,id:e.id||stableId('ev',(e.time||'')+'|'+(e.title||'')+'|'+(e.desc||'').slice(0,50)),updatedAt:e.updatedAt||1,link:e.link||'',addedBy:e.addedBy||'Tsae',photos:e.photos||[]})))),restaurants,lodging:d.lodging===null?null:{name:'尚未預訂',address:'',link:'',note:'',photos:[],...(d.lodging||{})},dailyCheck:{note:'',checkedAt:'',...(d.dailyCheck||{})},photos:d.photos||[]}}
+function normalizeDay(d){d=retireLegacyEvents(d);const restaurants=upgradeRestaurantMeals(d),hasCurated=Object.values(restaurants).flat().some(r=>r.note===RESTAURANT_RECOMMENDATIONS[restaurantKey(r.name)]?.note),copyChanged=JSON.stringify(restaurants)!==JSON.stringify(d.restaurants||{})||hasCurated&&!d.restaurantCopyRevision;return{...d,...(hasCurated?{restaurantCopyRevision:1}:{}),id:d.id||stableId('day',(d.date||'')+'|'+(d.title||'')),updatedAt:copyChanged?Math.max(RESTAURANT_COPY_TIME,d.updatedAt||1):d.updatedAt||1,place:d.place||inferPlace(d.title),events:sortEvents(dedupeEvents((d.events||[]).map(e=>({...e,id:e.id||stableId('ev',(e.time||'')+'|'+(e.title||'')+'|'+(e.desc||'').slice(0,50)),updatedAt:e.updatedAt||1,link:e.link||'',addedBy:e.addedBy||'Tsae',photos:e.photos||[]})))),restaurants,lodging:d.lodging===null||(d.lodging==null&&defaultDays.find(x=>x.id===d.id)?.lodging===null)?null:{name:'尚未預訂',address:'',link:'',note:'',photos:[],...(d.lodging||{})},dailyCheck:{note:'',checkedAt:'',...(d.dailyCheck||{})},photos:d.photos||[]}}
 function normalizeExpense(x){const amountTwd=x.amountTwd!=null?Number(x.amountTwd):Number(x.twd!=null?x.twd:x.amount||0);return{id:x.id||stableId('exp',(x.date||'')+'|'+(x.item||x.name||'')+'|'+(x.originalAmount!=null?x.originalAmount:x.amount||0)+'|'+(x.payer||x.paidBy||'')),updatedAt:x.updatedAt||1,date:x.date||'',item:x.item||x.name||'',originalAmount:Number(x.originalAmount!=null?x.originalAmount:x.amount||0),currency:x.currency||'TWD',rate:Number(x.rate||1),amountTwd,payer:x.payer||x.paidBy||'Chia',category:CATEGORIES.includes(x.category)?x.category:'其他',split:x.split||'equal',phase:x.phase||'pretrip',note:x.note||'',addedBy:x.addedBy||x.payer||'Chia',deleted:!!x.deleted}}
 function normalizePersonal(x){return{id:x.id||stableId('per',(x.date||'')+'|'+(x.item||x.name||'')+'|'+(x.originalAmount!=null?x.originalAmount:x.amount||0)+'|'+(x.owner||'')),updatedAt:x.updatedAt||1,owner:x.owner||'Chia',date:x.date||'',item:x.item||x.name||'',category:CATEGORIES.includes(x.category)?x.category:'其他',originalAmount:Number(x.originalAmount!=null?x.originalAmount:x.amount||0),currency:x.currency||'TWD',rate:Number(x.rate||1),amountTwd:Number(x.amountTwd!=null?x.amountTwd:x.twd!=null?x.twd:x.amount||0),note:x.note||'',addedBy:x.addedBy||x.owner||'Chia',deleted:!!x.deleted}}
 function normalizeCheck(x){return{id:x.id||stableId('chk',(x.t||x.text||'')+'|'+(x.owner||'')),updatedAt:x.updatedAt||1,t:x.t||x.text||'',done:!!x.done,owner:x.owner||'共同',addedBy:x.addedBy||'Tsae',photos:Array.isArray(x.photos)?x.photos:[],deleted:!!x.deleted}}
@@ -1137,7 +1137,7 @@ function restoreBackupData(d){const now=Date.now();overview={...d.overview,secti
 
 importData.onchange=async()=>{const file=importData.files[0];if(!file)return;try{const d=JSON.parse(await file.text());if(!d||![d.days,d.expenses,d.personalExpenses,d.packing,d.shopping].every(Array.isArray)||!d.overview||typeof d.overview!=='object')throw new Error('invalid backup');appConfirm('匯入會覆蓋目前資料，確定繼續？',()=>{restoreBackupData(d)},'確定匯入')}catch(e){appNotice('備份檔格式不正確')}finally{importData.value=''}};
 function saveAll(){saveJSON(KEYS.overview,overview,true);saveJSON(KEYS.days,days,true);saveJSON(KEYS.shared,expenses,true);saveJSON(KEYS.personal,personalExpenses,true);saveJSON(KEYS.packing,packing,true);saveJSON(KEYS.shopping,shopping,true);saveJSON(KEYS.rates,rates,true);saveJSON(KEYS.identity,currentIdentity,true)}
-resetData.textContent='恢復預設行程';resetData.onclick=()=>appConfirm('確定恢復最新預設行程？記帳、行李、購物、照片與旅行成員會保留。',()=>{backupBeforeUpdate(KEYS.days,days);const oldDays=days;const oldById=new Map(days.map(d=>[d.id,d]));days=defaultDays.map(d=>{const old=oldById.get(d.id);return normalizeDay({...d,updatedAt:Date.now(),photos:old?.photos||[],lodging:d.lodging===null?null:{...d.lodging,address:old?.lodging?.address||d.lodging.address,link:old?.lodging?.link||d.lodging.link,note:old?.lodging?.note||d.lodging.note,photos:old?.lodging?.photos||[]},events:restoredRecords(old?.events||[],d.events.map(e=>({...e,id:old?.events?.find(x=>x.title===e.title)?.id||stableId('ev',d.id+'|'+e.title),photos:old?.events?.find(x=>x.title===e.title)?.photos||e.photos||[]})),Date.now())})});days=restoredRecords(oldDays,days,Date.now());currentDay=days.findIndex(d=>!d.deleted);saveJSON(KEYS.days,days,true);renderDayNav();renderDay()},'確定恢復行程');
+resetData.textContent='恢復預設行程';resetData.onclick=()=>appConfirm('確定恢復最新預設行程？記帳、行李、購物、照片與旅行成員會保留。',()=>{backupBeforeUpdate(KEYS.days,days);const oldDays=days;const oldById=new Map(days.map(d=>[d.id,d]));days=defaultDays.map(d=>{const old=oldById.get(d.id);return normalizeDay({...d,updatedAt:Date.now(),photos:old?.photos||[],lodging:d.lodging===null||(d.lodging==null&&defaultDays.find(x=>x.id===d.id)?.lodging===null)?null:{...d.lodging,address:old?.lodging?.address||d.lodging.address,link:old?.lodging?.link||d.lodging.link,note:old?.lodging?.note||d.lodging.note,photos:old?.lodging?.photos||[]},events:restoredRecords(old?.events||[],d.events.map(e=>({...e,id:old?.events?.find(x=>x.title===e.title)?.id||stableId('ev',d.id+'|'+e.title),photos:old?.events?.find(x=>x.title===e.title)?.photos||e.photos||[]})),Date.now())})});days=restoredRecords(oldDays,days,Date.now());currentDay=days.findIndex(d=>!d.deleted);saveJSON(KEYS.days,days,true);renderDayNav();renderDay()},'確定恢復行程');
 initSync();
 window.addEventListener('pageshow',e=>{if(e.persisted)location.reload()});
 
