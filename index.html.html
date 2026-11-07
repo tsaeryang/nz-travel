@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>紐西蘭南島旅遊手帳</title>
-<!-- build: 2026-11-07-saved-place-compact-v1 -->
-<!-- BUILD_ID: 2026-11-07-saved-place-compact-v1 -->
-<meta name="build-id" content="2026-11-07-saved-place-compact-v1" />
+<!-- build: 2026-11-07-mobile-gutters-v1 -->
+<!-- BUILD_ID: 2026-11-07-mobile-gutters-v1 -->
+<meta name="build-id" content="2026-11-07-mobile-gutters-v1" />
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -206,6 +206,26 @@
 
 .saved-place-guide p{font-size:.9rem;line-height:1.65;margin:7px 0}.saved-place-timing{color:#676459}.saved-place .map-link{font-size:.82rem;padding:4px 10px;margin-top:5px}.saved-places-grid{gap:10px;margin-top:10px}
 .saved-places-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:12px;margin-top:14px}.saved-place{background:var(--cream);border:1px solid #dfd8c8;border-radius:16px;padding:14px;min-width:0}.saved-place b{display:block;overflow-wrap:anywhere}.saved-place p{margin:8px 0;line-height:1.6}.saved-place .muted{font-size:.84rem;margin-top:4px}.saved-place .map-link{display:inline-block;margin-top:9px}
+
+/* Mobile: reduce nested gutters without shrinking reading text or controls. */
+@media(max-width:600px){
+ main{padding-left:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right))}
+ .tabs{padding:12px 8px;gap:8px}
+ .card{padding:10px;border-width:2px;border-radius:16px;margin-bottom:16px;box-shadow:3px 4px 0 var(--shadow)}
+ #itinerary>.card{padding:10px 7px}
+ #dayContent>.card{padding:9px;border-radius:14px}
+ .event{margin-left:5px;padding-left:12px;padding-bottom:16px;border-left-width:2px}
+ .event:before{width:10px;height:10px;left:-6px;top:9px;border-width:2px}
+ .event-card{padding:10px;border-radius:14px;box-shadow:2px 3px 0 #0002}
+ .event-title-row{flex-wrap:wrap;gap:6px}.event-title-row>div:first-child{flex:1 1 200px;min-width:0}
+ .event-tools{gap:6px}.event p{line-height:1.6}
+ .restaurant-grid{gap:9px}.meal-card{padding:9px;border-radius:12px}
+ .saved-places-grid{margin-top:9px;gap:9px}.saved-place{padding:10px;border-radius:12px}
+ .lodging-card,.daily-check-card,.weather-card{padding:10px;border-radius:14px;box-shadow:2px 3px 0 #0002}
+ .background-note,.maps-note{padding:8px 9px}
+ .member-art-section{padding:10px!important}
+ .shopping-group,.expense-item,.stat{padding:10px}
+}
 </style>
 <!-- Firebase（多裝置即時同步用） -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js">
@@ -546,7 +566,7 @@
 
 <script>
 (function(){
-  const CURRENT_BUILD='2026-11-07-saved-place-compact-v1';
+  const CURRENT_BUILD='2026-11-07-mobile-gutters-v1';
   try{
     const bustUrl=location.pathname+'?_cb='+Date.now()+Math.random().toString(36).slice(2);
     fetch(bustUrl,{cache:'no-store'}).then(r=>r.text()).then(html=>{
