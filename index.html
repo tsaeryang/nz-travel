@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>紐西蘭南島旅遊手帳</title>
-<!-- build: 2026-11-07-google-maps-saved-v1 -->
-<!-- BUILD_ID: 2026-11-07-google-maps-saved-v1 -->
-<meta name="build-id" content="2026-11-07-google-maps-saved-v1" />
+<!-- build: 2026-11-07-google-maps-saved-v2 -->
+<!-- BUILD_ID: 2026-11-07-google-maps-saved-v2 -->
+<meta name="build-id" content="2026-11-07-google-maps-saved-v2" />
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -199,6 +199,7 @@
 
 
 /* Saved map places share the handbook card language. */
+.lodging-title>div{min-width:0;overflow-wrap:anywhere}
 .maps-note{margin:9px 0 4px;padding:9px 12px;background:#fff8e3;border-left:3px solid #d4b362;border-radius:0 10px 10px 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.94em;line-height:1.65}
 .maps-note small{display:block;color:#736548;font-size:.78rem;font-weight:700;margin-bottom:2px}
 .saved-places-card{margin-top:18px}.saved-places-card summary{cursor:pointer;font-weight:800;line-height:1.6}.saved-places-card summary:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
@@ -543,7 +544,7 @@
 
 <script>
 (function(){
-  const CURRENT_BUILD='2026-11-07-google-maps-saved-v1';
+  const CURRENT_BUILD='2026-11-07-google-maps-saved-v2';
   try{
     const bustUrl=location.pathname+'?_cb='+Date.now()+Math.random().toString(36).slice(2);
     fetch(bustUrl,{cache:'no-store'}).then(r=>r.text()).then(html=>{
